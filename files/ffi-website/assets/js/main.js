@@ -36,14 +36,98 @@ document.querySelectorAll('.nav__links a, .nav__dropdown-menu a').forEach(a => {
   if (href.includes(path) && path !== '') a.style.color = 'var(--gold)';
 });
 
-// Form — prevent default, show confirmation
+// ── HERO COUNTER ANIMATION ──
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count, 10);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  const countDown = el.dataset.countDown ? parseInt(el.dataset.countDown, 10) : null;
+  const duration = 1600; // ms
+  const start = performance.now();
+
+  if (countDown !== null) {
+    // Count DOWN from countDown to 0
+    const from = countDown;
+    const to = 0;
+    const step = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = Math.round(from - eased * (from - to));
+      el.textContent = prefix + (current > 0 ? current.toLocaleString() : '0');
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = prefix + '0';
+    };
+    requestAnimationFrame(step);
+  } else {
+    // Count UP from 0 to target
+    const step = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = prefix + current + (progress >= 1 ? suffix : '');
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+}
+
+// Trigger counters when hero stats enter viewport
+const statEls = document.querySelectorAll('.hero__stat-num[data-count], .hero__stat-num[data-count-down]');
+if (statEls.length) {
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  statEls.forEach(el => counterObserver.observe(el));
+}
+
+// ── CONTACT FORM → Web3Forms (sends to Landon@fordfrontierinvestments.com) ──
 const form = document.getElementById('contact-form');
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type=submit]');
-    btn.textContent = 'Message Sent ✓';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    btn.style.opacity = '0.7';
+
+    const formData = new FormData(form);
+    // Build a readable message body
+    const fields = [
+      'first_name', 'last_name', 'business', 'phone', 'email', 'city', 'service', 'message'
+    ];
+    let body = '';
+    fields.forEach(f => {
+      const val = formData.get(f);
+      if (val) body += `${f.replace('_', ' ').toUpperCase()}: ${val}\n`;
+    });
+    formData.set('message', body);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.success) {
+        btn.textContent = 'Message Sent ✓';
+        btn.style.background = '#2d7a3a';
+        btn.style.borderColor = '#2d7a3a';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      btn.textContent = 'Error — Try Again';
+      btn.style.background = '#a33';
+      btn.style.borderColor = '#a33';
+      btn.disabled = false;
+      console.error('Form error:', err);
+    }
   });
 }
