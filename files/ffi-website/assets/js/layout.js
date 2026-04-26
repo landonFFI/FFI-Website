@@ -36,9 +36,9 @@ document.getElementById('site-nav').innerHTML = `
       <div class="nav__dropdown">
         <a href="#">Service Areas</a>
         <div class="nav__dropdown-menu">
+          <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
           <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
           <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
-          <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
         </div>
       </div>
       <a href="${root}pages/about.html">About</a>
@@ -64,9 +64,9 @@ document.getElementById('site-nav').innerHTML = `
     <div class="nav__mobile-section">Payment</div>
     <a href="${root}pages/merchant-services.html">Merchant Services</a>
     <div class="nav__mobile-section">Service Areas</div>
+    <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
     <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
     <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
-    <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
     <div class="nav__mobile-section">Company</div>
     <a href="${root}pages/about.html">About</a>
     <a href="${root}pages/faq.html">FAQ</a>
@@ -83,10 +83,10 @@ document.getElementById('site-footer').innerHTML = `
       <div>
         <div class="footer__brand-name">Ford Frontier <span>Investments</span></div>
         <div class="footer__brand-tag">Alabama's ATM Experts</div>
-        <p class="footer__brand-desc">Independent ATM Deployer (IAD) headquartered in Montgomery and Tuscaloosa. We install, service, and operate ATMs for businesses across Alabama — at no cost to you. Processing via PAI and DNS.</p>
+        <p class="footer__brand-desc">Independent ATM Deployer (IAD) headquartered in Birmingham, Alabama. We install, service, and operate ATMs for businesses across Alabama — at no cost to you. We process all major networks.</p>
         <div class="footer__contact-item">📞 <a href="tel:4047473899">(404) 747-3899</a></div>
         <div class="footer__contact-item">✉ <a href="mailto:Landon@fordfrontierinvestments.com">Landon@fordfrontierinvestments.com</a></div>
-        <div class="footer__contact-item">📍 Montgomery &amp; Tuscaloosa, AL</div>
+        <div class="footer__contact-item">📍 Birmingham, Alabama</div>
       </div>
       <div class="footer__col">
         <div class="footer__col-title">ATM Services</div>
@@ -108,9 +108,9 @@ document.getElementById('site-footer').innerHTML = `
       </div>
       <div class="footer__col">
         <div class="footer__col-title">Service Areas</div>
+        <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
         <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
         <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
-        <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
         <a href="${root}index.html#contact">All of Alabama</a>
       </div>
       <div class="footer__col">
@@ -123,7 +123,7 @@ document.getElementById('site-footer').innerHTML = `
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="footer__copy">© 2025 Ford Frontier Investments, LLC. All rights reserved. Montgomery &amp; Tuscaloosa, Alabama.</div>
+      <div class="footer__copy">© 2025 Ford Frontier Investments, LLC. All rights reserved. Birmingham, Alabama.</div>
       <div class="footer__legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
