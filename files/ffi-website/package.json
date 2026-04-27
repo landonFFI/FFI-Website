@@ -1,0 +1,16 @@
+{
+  "name": "ffi-website",
+  "version": "1.0.0",
+  "description": "Ford Frontier Investments - Alabama ATM Company Website",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": ["atm", "alabama", "static-site"],
+  "author": "Ford Frontier Investments",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
