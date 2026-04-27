@@ -8,7 +8,7 @@ if (hamburger && mobileNav) {
 }
 
 // FAQ accordion
-document.querySelectorAll('.faq-item__q').forEach(q => 
+document.querySelectorAll('.faq-item__q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.closest('.faq-item');
     item.classList.toggle('open');
