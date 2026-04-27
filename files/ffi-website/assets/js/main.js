@@ -8,7 +8,7 @@ if (hamburger && mobileNav) {
 }
 
 // FAQ accordion
-document.querySelectorAll('.faq-item__q').forEach(q => {
+document.querySelectorAll('.faq-item__q').forEach(q => 
   q.addEventListener('click', () => {
     const item = q.closest('.faq-item');
     item.classList.toggle('open');
@@ -30,10 +30,10 @@ if (reveals.length) {
 }
 
 // Active nav link
-const path = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index.html';
+const currentPage = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index.html';
 document.querySelectorAll('.nav__links a, .nav__dropdown-menu a').forEach(a => {
   const href = a.getAttribute('href') || '';
-  if (href.includes(path) && path !== '') a.style.color = 'var(--gold)';
+  if (href.includes(currentPage) && currentPage !== '') a.style.color = 'var(--gold)';
 });
 
 // ── HERO COUNTER ANIMATION ──
