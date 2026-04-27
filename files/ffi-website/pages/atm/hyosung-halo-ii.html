@@ -872,25 +872,10 @@
 
 <!-- FAQ -->
 <section class="section section--gray">
-  <style>
-    /* Force FAQ answers always visible on this page — overrides main.css accordion */
-    .ffi-faq .faq-item__a {
-      display: block !important;
-      padding-bottom: 20px;
-    }
-    .ffi-faq .faq-item__q {
-      cursor: default;
-      padding-bottom: 8px;
-    }
-    .ffi-faq .faq-item__q::after { display: none; }
-    .ffi-faq .faq-item {
-      padding: 24px 0;
-    }
-  </style>
   <div class="container">
     <span class="label" style="color:var(--gold-dark);">Common Questions</span>
     <h2 class="heading heading--md" style="margin-bottom:40px;">Halo II FAQ</h2>
-    <div class="faq-list ffi-faq" style="max-width:800px;">
+    <div class="faq-list" style="max-width:800px;">
       <div class="faq-item">
         <div class="faq-item__q">What is included with my purchase?</div>
         <div class="faq-item__a">Every Halo II purchase includes a brand new, factory-sealed machine, full ATM processing setup through all major networks (Visa, Mastercard, Plus, Star, etc.), free nationwide shipping, and a 2-year manufacturer warranty. Factory programming is an optional add-on — if you skip it, one of our technicians will walk you through setup over the phone at no charge.</div>
@@ -926,6 +911,17 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Re-bind FAQ accordion after main.js runs, in case of timing issues
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-item__q').forEach(function(q) {
+      q.addEventListener('click', function() {
+        q.closest('.faq-item').classList.toggle('open');
+      });
+    });
+  });
+</script>
 
 <!-- CTA -->
 <section class="cta-band">
