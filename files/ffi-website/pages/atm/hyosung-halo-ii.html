@@ -777,20 +777,20 @@
           <div class="config-section">
             <span class="config-label">Step 1 — Cassette Size</span>
             <div class="cassette-options">
-              <div class="cassette-opt selected" onclick="selectCassette(this, 2585, '1K Cassette', 'ACH')" data-price="2585" data-card="2688.40" data-name="1K Cassette">
+              <div class="cassette-opt selected" onclick="selectCassette(this, 2585, '1K Cassette')" data-price="2585" data-name="1K Cassette">
                 <div class="cassette-opt__badge">Most Popular</div>
                 <div class="cassette-opt__name">1K</div>
                 <div class="cassette-opt__price">$2,585</div>
               </div>
-              <div class="cassette-opt" onclick="selectCassette(this, 2900, '2K Cassette', 'ACH')" data-price="2900" data-card="3016" data-name="2K Cassette">
+              <div class="cassette-opt" onclick="selectCassette(this, 2900, '2K Cassette')" data-price="2900" data-name="2K Cassette">
                 <div class="cassette-opt__name">2K</div>
                 <div class="cassette-opt__price">$2,900</div>
               </div>
-              <div class="cassette-opt" onclick="selectCassette(this, 3005, 'Dual 1K Cassettes', 'ACH')" data-price="3005" data-card="3125.20" data-name="Dual 1K Cassettes">
+              <div class="cassette-opt" onclick="selectCassette(this, 3005, 'Dual 1K Cassettes')" data-price="3005" data-name="Dual 1K Cassettes">
                 <div class="cassette-opt__name">Dual 1K</div>
                 <div class="cassette-opt__price">$3,005</div>
               </div>
-              <div class="cassette-opt" onclick="selectCassette(this, 3530, 'Dual 2K Cassettes', 'ACH')" data-price="3530" data-card="3671.20" data-name="Dual 2K Cassettes">
+              <div class="cassette-opt" onclick="selectCassette(this, 3530, 'Dual 2K Cassettes')" data-price="3530" data-name="Dual 2K Cassettes">
                 <div class="cassette-opt__name">Dual 2K</div>
                 <div class="cassette-opt__price">$3,530</div>
               </div>
@@ -937,12 +937,22 @@
 
 <div id="site-footer"></div>
 <script src="../../assets/js/layout.js"></script>
+<script>
+  // layout.js detects /pages/ and sets root='../' but this page is /pages/atm/
+  // so all links are one level short. Fix by prepending '../' to all relative hrefs.
+  document.querySelectorAll('a[href]').forEach(function(a) {
+    const h = a.getAttribute('href');
+    if (h && h.startsWith('../') && !h.startsWith('../../') && !h.startsWith('http') && !h.startsWith('tel') && !h.startsWith('mailto')) {
+      a.setAttribute('href', '../' + h);
+    }
+  });
+</script>
 <script src="../../assets/js/main.js"></script>
 
 <script>
   // ── STATE ──
   let state = {
-    cassette: { name: '1K Cassette', ach: 2585, card: 2688.40 },
+    cassette: { name: '1K Cassette', base: 2585 },
     addons: { programming: false, nfc: false, processor: false },
     payment: 'ach',
     cart: []
@@ -952,12 +962,17 @@
   const ADDON_NAMES  = { programming: 'Factory Programming', nfc: 'NFC Contactless Reader', processor: 'Outside Processor Fee' };
 
   function calcTotal() {
-    let base = state.payment === 'ach' ? state.cassette.ach : state.cassette.card;
-    let addons = 0;
+    // Start with base cassette price
+    let subtotal = state.cassette.base;
+    // Add all selected add-ons
     for (const [k, on] of Object.entries(state.addons)) {
-      if (on) addons += ADDON_PRICES[k];
+      if (on) subtotal += ADDON_PRICES[k];
     }
-    return base + addons;
+    // Card payment = total × 1.04 (4% applied to full order)
+    if (state.payment === 'card') {
+      subtotal = subtotal * 1.04;
+    }
+    return subtotal;
   }
 
   function fmt(n) {
@@ -968,27 +983,19 @@
     const total = calcTotal();
     document.getElementById('price-display').textContent = fmt(total);
 
-    let base = state.payment === 'ach' ? state.cassette.ach : state.cassette.card;
-    let lines = [fmt(base) + ' base'];
+    let lines = [fmt(state.cassette.base) + ' base'];
     if (state.addons.programming) lines.push('+$200 programming');
     if (state.addons.nfc)         lines.push('+$495 NFC');
     if (state.addons.processor)   lines.push('+$500 outside processor');
+    if (state.payment === 'card') lines.push('+4% card fee');
     lines.push('Free shipping');
     document.getElementById('price-breakdown').innerHTML = lines.map((l,i) => i===0 ? `<span>${l}</span>` : l).join(' · ');
   }
 
-  function selectCassette(el, ach, name, _) {
-    document.querySelectorAll('.cassette-opt').forEach(o => {
-      if (o.closest('.configurator') && !o.id) o.classList.remove('selected');
-    });
-    // only deselect cassette options (not payment)
-    document.querySelectorAll('#pay-ach, #pay-card').forEach(o => {}); // preserve payment
-    // deselect all cassette opts
+  function selectCassette(el, base, name) {
     el.parentElement.querySelectorAll('.cassette-opt').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
-
-    const cardPrice = parseFloat(el.dataset.card);
-    state.cassette = { name, ach, card: cardPrice };
+    state.cassette = { name, base };
     updatePriceDisplay();
   }
 
@@ -1165,6 +1172,21 @@
 
   // Init
   updatePriceDisplay();
+
+  // ── FAQ ACCORDION ──
+  // Clones each question element to strip any conflicting listeners from main.js,
+  // then attaches a clean click handler that toggles the 'open' class.
+  setTimeout(function() {
+    document.querySelectorAll('.faq-item__q').forEach(function(q) {
+      const fresh = q.cloneNode(true);
+      q.parentNode.replaceChild(fresh, q);
+      fresh.style.cursor = 'pointer';
+      fresh.addEventListener('click', function() {
+        fresh.closest('.faq-item').classList.toggle('open');
+      });
+    });
+  }, 150);
+
 </script>
 
 </body>
