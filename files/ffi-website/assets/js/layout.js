@@ -78,37 +78,39 @@ document.getElementById('site-nav').innerHTML = `
 </nav>`;
 
 // ── HAMBURGER TOGGLE ──
-(function() {
-  var btn = document.getElementById('hamburger');
+// Uses document-level delegation so it works regardless of DOM timing
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('#hamburger, .nav__hamburger');
+  if (!btn) return;
   var mobileNav = document.getElementById('mobile-nav');
-  if (!btn || !mobileNav) return;
-  btn.addEventListener('click', function() {
-    var isOpen = mobileNav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    // Animate hamburger spans into X
-    var spans = btn.querySelectorAll('span');
-    if (isOpen) {
-      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-    } else {
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    }
-  });
-  // Close mobile nav when a link is clicked
-  mobileNav.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobileNav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      var spans = btn.querySelectorAll('span');
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    });
-  });
-})();
+  if (!mobileNav) return;
+  var isOpen = mobileNav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  var spans = btn.querySelectorAll('span');
+  if (isOpen) {
+    spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+// Close mobile nav when a nav link is clicked (also delegated)
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('#mobile-nav a');
+  if (!link) return;
+  var mobileNav = document.getElementById('mobile-nav');
+  var btn = document.querySelector('#hamburger, .nav__hamburger');
+  if (!mobileNav || !btn) return;
+  mobileNav.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  var spans = btn.querySelectorAll('span');
+  spans[0].style.transform = '';
+  spans[1].style.opacity = '';
+  spans[2].style.transform = '';
+});
 
 // ── FOOTER ──
 document.getElementById('site-footer').innerHTML = `
