@@ -176,9 +176,9 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 .nav__dropdown > a:hover { color: var(--color-accent-light); }
 
 .nav__dropdown-menu {
-  display: none;
+  display: block;
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;
   left: 0;
   min-width: 220px;
   background: var(--color-primary-dark);
@@ -187,8 +187,34 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   box-shadow: var(--shadow-lg);
   padding: var(--space-sm) 0;
   z-index: 100;
+  /* Fade instead of instant display:none toggle */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  /* Invisible padding bridge fills the gap so mouse doesn't "escape" */
+  margin-top: 0;
+  padding-top: calc(var(--space-sm) + 10px);
 }
-.nav__dropdown:hover .nav__dropdown-menu { display: block; }
+/* Hovering the dropdown wrapper shows the menu */
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown:focus-within .nav__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+}
+/* Pseudo-element bridge: fills the invisible gap between trigger and menu */
+.nav__dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  right: -10px;
+  height: 14px;
+}
 .nav__dropdown-menu a {
   display: block;
   padding: 10px var(--space-lg);
