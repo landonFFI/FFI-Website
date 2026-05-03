@@ -250,7 +250,7 @@ h2 em {
    4. NAVIGATION
    ============================================================ */
 
-.site-nav {
+.nav {
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -259,7 +259,7 @@ h2 em {
   box-shadow: var(--shadow-sm);
 }
 
-.nav-inner {
+.nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -270,7 +270,7 @@ h2 em {
 }
 
 /* Logo */
-.nav-logo {
+.nav__logo {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
@@ -283,23 +283,23 @@ h2 em {
   flex-shrink: 0;
 }
 
-.nav-logo:hover {
+.nav__logo:hover {
   color: var(--color-accent-light);
 }
 
-.nav-logo img {
+.nav__logo img {
   height: 36px;
   width: auto;
 }
 
 /* Nav Links */
-.nav-links {
+.nav__links {
   display: flex;
   align-items: center;
   gap: var(--space-xl);
 }
 
-.nav-links a {
+.nav__links a {
   color: rgba(255,255,255,0.8);
   font-size: 0.875rem;
   font-weight: 600;
@@ -310,20 +310,17 @@ h2 em {
   white-space: nowrap;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav__links a:hover,
+.nav__links a.active {
   color: var(--color-accent-light);
 }
 
 /* Nav CTA */
-.nav-cta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
+.nav__cta {
   flex-shrink: 0;
 }
 
-.nav-phone {
+.nav__phone {
   color: rgba(255,255,255,0.7);
   font-size: 0.875rem;
   font-weight: 600;
@@ -331,12 +328,12 @@ h2 em {
   transition: color var(--transition);
 }
 
-.nav-phone:hover {
+.nav__phone:hover {
   color: var(--color-accent-light);
 }
 
 /* Mobile hamburger */
-.nav-toggle {
+.nav__hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -350,7 +347,7 @@ h2 em {
   padding: 0;
 }
 
-.nav-toggle span {
+.nav__hamburger span {
   display: block;
   width: 24px;
   height: 2px;
@@ -1491,7 +1488,7 @@ h2 em {
     padding-right: var(--space-lg);
   }
 
-  .nav-links {
+  .nav__links {
     gap: var(--space-lg);
   }
 
@@ -1565,17 +1562,17 @@ h2 em {
   }
 
   /* Nav */
-  .nav-links,
-  .nav-phone {
+  .nav__links,
+  .nav__phone {
     display: none;
   }
 
-  .nav-toggle {
+  .nav__hamburger {
     display: flex;
   }
 
   /* Mobile nav open state */
-  .nav-links.open {
+  .nav__links.open {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -1590,7 +1587,7 @@ h2 em {
     box-shadow: var(--shadow-xl);
   }
 
-  .nav-links.open a {
+  .nav__links.open a {
     font-size: 1rem;
     padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--color-border-dark);
