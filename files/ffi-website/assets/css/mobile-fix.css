@@ -1,17 +1,26 @@
 /* ============================================================
    FORD FRONTIER INVESTMENTS — mobile-fix.css
-   This file is intentionally minimal — all responsive rules
-   are now consolidated in main.css. Only mobile-nav panel
-   overrides live here.
+   All responsive rules are in main.css.
+   This file only adds the mobile-nav slide-down animation.
    ============================================================ */
 
-/* Mobile nav panel: slide in from right */
-.nav__mobile {
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-}
-.nav__mobile.open,
-.nav__mobile.is-open {
-  display: block;
-  transform: translateX(0);
+/* Mobile nav panel: smooth slide-down */
+@media (max-width: 768px) {
+  .nav__mobile {
+    /* Override any translateX from older rules */
+    transform: none !important;
+    /* Slide-down animation via max-height */
+    max-height: 0;
+    overflow: hidden;
+    display: block !important;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .nav__mobile.open {
+    max-height: 85vh;
+    overflow-y: auto;
+    padding-top: var(--space-md, 1rem);
+    padding-bottom: var(--space-lg, 1.5rem);
+  }
 }
