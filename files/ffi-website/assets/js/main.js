@@ -1,12 +1,3 @@
-// Mobile nav toggle
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobile-nav');
-if (hamburger && mobileNav) {
-  hamburger.addEventListener('click', () => {
-    mobileNav.classList.toggle('open');
-  });
-}
-
 // FAQ accordion
 document.querySelectorAll('.faq-item__q').forEach(q => {
   q.addEventListener('click', () => {
