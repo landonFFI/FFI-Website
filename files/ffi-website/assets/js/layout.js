@@ -134,7 +134,8 @@ document.getElementById('site-footer').innerHTML = `
   </div>
 </footer>`;
 
-// ── SITEWIDE CART ──
+// ── SITEWIDE CART (buy-atm page only) ──
+if (window.location.pathname.includes('buy-atm') || window.location.pathname.includes('/atm/')) {
 // Inject cart button, drawer, and checkout modal into every page
 (function() {
   const cartHTML = `
@@ -373,3 +374,5 @@ document.getElementById('site-footer').innerHTML = `
   })();
 
 })();
+
+}
