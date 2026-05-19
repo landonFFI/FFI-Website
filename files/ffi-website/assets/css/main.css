@@ -1139,6 +1139,54 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   margin: 0;
 }
 
+/* ── FAQ ACCORDION ── */
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+.faq-item__q {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: left;
+  transition: color var(--transition);
+}
+.faq-item__q::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.faq-item.open .faq-item__q { color: var(--color-accent); }
+.faq-item.open .faq-item__q::after { transform: rotate(45deg); }
+.faq-item__a {
+  display: none;
+  padding-bottom: var(--space-lg);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+.faq-item__a p { margin: 0 0 var(--space-sm); }
+.faq-item__a p:last-child { margin-bottom: 0; }
+.faq-item.open .faq-item__a { display: block; }
+
+/* Dark-section FAQ variant */
+.section--dark .faq-item { border-bottom-color: rgba(255,255,255,0.1); }
+.section--dark .faq-item__q { color: var(--color-text-light); }
+.section--dark .faq-item.open .faq-item__q { color: var(--color-accent); }
+.section--dark .faq-item__a { color: rgba(255,255,255,0.6); }
+
 /* ── WHO WE SERVE ── */
 .biz-grid {
   display: grid;
