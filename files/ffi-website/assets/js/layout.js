@@ -23,7 +23,6 @@ document.getElementById('site-nav').innerHTML = `
           <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
           <a href="${root}pages/atm-processing.html">ATM Processing</a>
           <a href="${root}pages/atm-route-acquisition.html">ATM Route Acquisition</a>
-          <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
         </div>
       </div>
       <div class="nav__dropdown">
@@ -43,6 +42,7 @@ document.getElementById('site-nav').innerHTML = `
           <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
           <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
           <a href="${root}pages/tuscaloosa-strip.html">The Strip — Tuscaloosa</a>
+          <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
         </div>
       </div>
       <a href="${root}pages/about.html">About</a>
@@ -65,7 +65,6 @@ document.getElementById('site-nav').innerHTML = `
     <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
     <a href="${root}pages/atm-processing.html">ATM Processing</a>
     <a href="${root}pages/atm-route-acquisition.html">ATM Route Acquisition</a>
-    <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
     <div class="nav__mobile-section">Payment</div>
     <a href="${root}pages/merchant-services.html">Merchant Services</a>
     <div class="nav__mobile-section">Service Areas</div>
@@ -73,6 +72,7 @@ document.getElementById('site-nav').innerHTML = `
     <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
     <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
     <a href="${root}pages/tuscaloosa-strip.html">The Strip — Tuscaloosa</a>
+    <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
     <div class="nav__mobile-section">Company</div>
     <a href="${root}pages/about.html">About</a>
     <a href="${root}pages/faq.html">FAQ</a>
