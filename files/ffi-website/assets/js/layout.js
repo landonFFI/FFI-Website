@@ -49,11 +49,13 @@ document.getElementById('site-nav').innerHTML = `
         </div>
       </div>
       <a href="${root}pages/about.html">About</a>
-      <a href="${root}pages/faq.html">FAQ</a>
-      <a href="${root}pages/blog.html">Blog</a>
+      <a href="${root}pages/faq.html" class="nav__link--aux">FAQ</a>
+      <a href="${root}pages/blog.html" class="nav__link--aux">Blog</a>
     </div>
-    <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
-    <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
+    <div class="nav__actions">
+      <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
+      <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
+    </div>
     <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
