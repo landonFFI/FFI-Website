@@ -531,6 +531,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 
 @media (max-width: 1280px) {
   .nav__link--aux { display: none; }
+  .nav__phone { display: none; }
 }
 
 /* ============================================================
@@ -541,7 +542,6 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   :root { --space-3xl: 4rem; --space-2xl: 2.5rem; }
   .container { padding-left: var(--space-lg); padding-right: var(--space-lg); }
   .nav-center { gap: 12px; }
-  .nav__phone { display: none; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .atm-grid { grid-template-columns: repeat(2, 1fr); }
   .process-steps { grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
