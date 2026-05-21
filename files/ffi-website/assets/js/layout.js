@@ -44,6 +44,7 @@ document.getElementById('site-nav').innerHTML = `
           <a href="${root}pages/tuscaloosa-strip.html">The Strip — Tuscaloosa</a>
           <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
           <a href="${root}pages/gentlemens-clubs.html">Gentlemen's Clubs</a>
+          <a href="${root}pages/gas-stations.html">Gas Stations</a>
         </div>
       </div>
       <a href="${root}pages/about.html">About</a>
@@ -75,6 +76,7 @@ document.getElementById('site-nav').innerHTML = `
     <a href="${root}pages/tuscaloosa-strip.html">The Strip — Tuscaloosa</a>
     <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
     <a href="${root}pages/gentlemens-clubs.html">Gentlemen's Clubs</a>
+    <a href="${root}pages/gas-stations.html">Gas Stations</a>
     <div class="nav__mobile-section">Company</div>
     <a href="${root}pages/about.html">About</a>
     <a href="${root}pages/faq.html">FAQ</a>
