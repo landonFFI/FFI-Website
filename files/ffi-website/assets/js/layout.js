@@ -8,11 +8,13 @@ const root = isAtmProduct ? '../../' : (isPages ? '../' : './');
 document.getElementById('site-nav').innerHTML = `
 <nav class="nav">
   <div class="nav__inner">
-    <a href="${root}index.html" class="nav__logo">
-      Ford Frontier <span>Investments</span>
-      <small>Alabama's ATM Experts</small>
-    </a>
-    <div class="nav__links">
+    <div class="nav-left">
+      <a href="${root}index.html" class="nav__logo">
+        Ford Frontier <span>Investments</span>
+        <small>Alabama's ATM Experts</small>
+      </a>
+    </div>
+    <div class="nav-center">
       <div class="nav__dropdown">
         <a href="#">ATM Services</a>
         <div class="nav__dropdown-menu">
@@ -52,7 +54,7 @@ document.getElementById('site-nav').innerHTML = `
       <a href="${root}pages/faq.html" class="nav__link--aux">FAQ</a>
       <a href="${root}pages/blog.html" class="nav__link--aux">Blog</a>
     </div>
-    <div class="nav__actions">
+    <div class="nav-right">
       <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
       <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
     </div>
