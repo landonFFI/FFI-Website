@@ -112,6 +112,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   background-color: var(--color-primary-dark);
   border-bottom: 1px solid var(--color-border-dark);
   box-shadow: var(--shadow-sm);
+  overflow: visible;
 }
 
 .nav__inner {
@@ -119,10 +120,11 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   align-items: center;
   justify-content: space-between;
   height: 68px;
+  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-xl);
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .nav__logo {
@@ -144,8 +146,9 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 .nav__links {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   flex: 1;
+  min-width: 0;
 }
 
 .nav__links > a {
@@ -511,13 +514,25 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 [itemprop="name"] { font-weight: inherit; }
 
 /* ============================================================
+   19b. RESPONSIVE — NAV ONLY (≤ 1280px)
+   ============================================================ */
+
+@media (max-width: 1280px) {
+  .nav__inner { padding: 0 var(--space-lg); gap: 0.75rem; }
+  .nav__links { gap: 0.625rem; }
+  .nav__links > a,
+  .nav__dropdown > a { font-size: 0.75rem; }
+  .nav__phone { display: none; }
+}
+
+/* ============================================================
    20. RESPONSIVE — TABLET (≤ 1024px)
    ============================================================ */
 
 @media (max-width: 1024px) {
   :root { --space-3xl: 4rem; --space-2xl: 2.5rem; }
   .container { padding-left: var(--space-lg); padding-right: var(--space-lg); }
-  .nav__links { gap: var(--space-md); }
+  .nav__links { gap: 0.5rem; }
   .nav__phone { display: none; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .atm-grid { grid-template-columns: repeat(2, 1fr); }
