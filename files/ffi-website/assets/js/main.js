@@ -22,7 +22,7 @@ if (reveals.length) {
 
 // Active nav link
 const currentPage = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index.html';
-document.querySelectorAll('.nav__links a, .nav__dropdown-menu a').forEach(a => {
+document.querySelectorAll('.nav-center a, .nav__dropdown-menu a').forEach(a => {
   const href = a.getAttribute('href') || '';
   if (href.includes(currentPage) && currentPage !== '') a.style.color = 'var(--gold)';
 });

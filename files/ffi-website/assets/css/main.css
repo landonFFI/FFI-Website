@@ -149,7 +149,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   gap: 18px;
   font-size: 12px;
   letter-spacing: 0.03em;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .nav-center > a {
@@ -249,6 +249,9 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   align-items: center;
   gap: 16px;
   white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  background: var(--color-primary-dark);
 }
 
 .nav__hamburger {
