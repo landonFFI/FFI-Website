@@ -6,15 +6,14 @@ const root = isAtmProduct ? '../../' : (isPages ? '../' : './');
 
 // ── NAV ──
 document.getElementById('site-nav').innerHTML = `
-<nav class="nav">
-  <div class="nav__inner">
-    <div class="nav-left">
-      <a href="${root}index.html" class="nav__logo">
-        Ford Frontier <span>Investments</span>
-        <small>Alabama's ATM Experts</small>
-      </a>
-    </div>
-    <div class="nav-center">
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="${root}index.html" class="nav__logo">
+      Ford Frontier <span>Investments</span>
+      <small>Alabama's ATM Experts</small>
+    </a>
+  </div>
+  <div class="nav-center">
       <div class="nav__dropdown">
         <a href="#">ATM Services</a>
         <div class="nav__dropdown-menu">
@@ -58,10 +57,9 @@ document.getElementById('site-nav').innerHTML = `
       <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
       <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
     </div>
-    <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav__mobile" id="mobile-nav">
     <div class="nav__mobile-section">ATM Services</div>
     <a href="${root}pages/free-atm-placement.html">Free ATM Placement</a>

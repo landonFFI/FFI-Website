@@ -105,30 +105,24 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
    4. NAVIGATION
    ============================================================ */
 
-.nav {
+.navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
   background-color: var(--color-primary-dark);
   border-bottom: 1px solid var(--color-border-dark);
   box-shadow: var(--shadow-sm);
-  overflow: visible;
-}
-
-.nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 68px;
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
   padding: 0 24px;
-  gap: 0;
+  box-sizing: border-box;
 }
 
 .nav-left {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .nav__logo {
@@ -148,12 +142,14 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 .nav__logo:hover { color: var(--color-accent-light); }
 
 .nav-center {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-shrink: 1;
+  justify-content: center;
+  gap: 18px;
   font-size: 12px;
-  min-width: 0;
+  letter-spacing: 0.03em;
+  overflow: hidden;
 }
 
 .nav-center > a {
@@ -248,10 +244,11 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 .nav__cta { flex-shrink: 0; }
 
 .nav-right {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 16px;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .nav__hamburger {
@@ -1466,12 +1463,11 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 /* ── HAMBURGER / NAV MOBILE ── */
 @media (max-width: 768px) {
   /* Ensure nav stacks correctly */
-  .nav__inner {
+  .navbar {
     padding: 0 var(--space-md);
     height: 60px;
     position: relative;
   }
-  .nav { position: relative; z-index: 1000; }
   .nav__mobile {
     position: absolute;
     top: 100%;
