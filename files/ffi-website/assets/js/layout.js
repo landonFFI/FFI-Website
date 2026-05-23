@@ -24,6 +24,7 @@ document.getElementById('site-nav').innerHTML = `
           <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
           <a href="${root}pages/atm-processing.html">ATM Processing</a>
           <a href="${root}pages/atm-route-acquisition.html">ATM Route Acquisition</a>
+          <a href="${root}pages/sell-your-atm.html">Sell Your ATM or Route</a>
         </div>
       </div>
       <div class="nav__dropdown">
@@ -70,6 +71,7 @@ document.getElementById('site-nav').innerHTML = `
     <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
     <a href="${root}pages/atm-processing.html">ATM Processing</a>
     <a href="${root}pages/atm-route-acquisition.html">ATM Route Acquisition</a>
+    <a href="${root}pages/sell-your-atm.html">Sell Your ATM or Route</a>
     <div class="nav__mobile-section">Payment</div>
     <a href="${root}pages/merchant-services.html">Merchant Services</a>
     <div class="nav__mobile-section">Service Areas</div>
