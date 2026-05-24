@@ -100,18 +100,17 @@ if (form) {
     formData.set('message', body);
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd', {
         method: 'POST',
         body: formData
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         btn.textContent = 'Message Sent ✓';
         btn.style.background = '#2d7a3a';
         btn.style.borderColor = '#2d7a3a';
         form.reset();
       } else {
-        throw new Error(data.message || 'Submission failed');
+        throw new Error('Submission failed');
       }
     } catch (err) {
       btn.textContent = 'Error — Try Again';

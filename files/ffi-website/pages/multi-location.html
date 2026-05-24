@@ -566,7 +566,6 @@
       </div>
       <div>
         <form id="ml-portfolio-form" style="display:flex;flex-direction:column;gap:16px;">
-          <input type="hidden" name="webhook_url" value="https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd">
           <input type="hidden" name="access_key" value="958f885c-03f9-4196-8b83-7889c2b79cd0" />
           <input type="hidden" name="subject" value="Multi-Location ATM Portfolio Lead — Alabama" />
           <input type="hidden" name="from_name" value="Ford Frontier Investments Website" />
@@ -622,15 +621,14 @@
     var body = 'NAME: ' + name + '\nBUSINESS: ' + business + '\nPHONE: ' + phone + '\nNUMBER OF LOCATIONS: ' + locations;
     formData.set('message', body);
     try {
-      var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-      var data = await res.json();
-      if (data.success) {
+      var res = await fetch('https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd', { method: 'POST', body: formData });
+      if (res.ok) {
         btn.textContent = 'Review Scheduled ✓';
         btn.style.background = '#2d7a3a';
         btn.style.borderColor = '#2d7a3a';
         form.reset();
       } else {
-        throw new Error(data.message || 'Submission failed');
+        throw new Error('Submission failed');
       }
     } catch (err) {
       btn.textContent = 'Error — Try Again';
