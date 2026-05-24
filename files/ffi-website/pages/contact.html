@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Ford Frontier Investments</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/mobile-fix.css" />
+  <style>
+    .contact-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    .contact-wrap h1 {
+      font-family: var(--font-display, 'Oswald', sans-serif);
+      font-size: 42px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--navy, #0d1b2a);
+      margin-bottom: 10px;
+    }
+    .contact-wrap h1 span { color: #c9a84c; }
+    .contact-sub {
+      font-size: 16px;
+      color: var(--text-muted, #6b7280);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .contact-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .contact-form label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--navy, #0d1b2a);
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border, #e5e7eb);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--navy, #0d1b2a);
+      background: #fff;
+      box-sizing: border-box;
+      border-radius: 0;
+      appearance: none;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid #c9a84c;
+      outline-offset: 0;
+    }
+    .contact-form select { cursor: pointer; }
+    .trust-line {
+      font-size: 12px;
+      color: var(--text-muted, #9ca3af);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .contact-success {
+      display: none;
+      padding: 24px;
+      background: rgba(34,197,94,0.08);
+      border-left: 4px solid #22c55e;
+      font-size: 16px;
+      color: #166534;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .contact-error {
+      display: none;
+      padding: 16px;
+      background: rgba(239,68,68,0.08);
+      border-left: 4px solid #ef4444;
+      font-size: 14px;
+      color: #991b1b;
+      margin-top: 12px;
+    }
+    .quick-links {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border, #e5e7eb);
+    }
+    .quick-links__heading {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted, #9ca3af);
+      margin-bottom: 14px;
+    }
+    .quick-links__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+    .quick-links__list a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy, #0d1b2a);
+      text-decoration: none;
+      border-bottom: 1px solid #c9a84c;
+      padding-bottom: 1px;
+      transition: color 0.15s;
+    }
+    .quick-links__list a:hover { color: #c9a84c; }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="contact-wrap">
+  <h1>Let's <span>Talk</span></h1>
+  <p class="contact-sub">Fill out the form below. We'll reach out within 1 business day.</p>
+
+  <form id="contact-form" class="contact-form">
+    <div class="field">
+      <label for="c-name">Name *</label>
+      <input type="text" id="c-name" name="name" placeholder="Your name" required />
+    </div>
+    <div class="field">
+      <label for="c-phone">Phone Number *</label>
+      <input type="tel" id="c-phone" name="phone" placeholder="Best number to reach you" required />
+    </div>
+    <div class="field">
+      <label for="c-email">Email *</label>
+      <input type="email" id="c-email" name="email" placeholder="Your email address" required />
+    </div>
+    <div class="field">
+      <label for="c-biz">Business Name</label>
+      <input type="text" id="c-biz" name="business_name" placeholder="Your business name" />
+    </div>
+    <div class="field">
+      <label for="c-topic">What can we help you with?</label>
+      <select id="c-topic" name="topic">
+        <option value="" disabled selected>Select one</option>
+        <option value="free-atm">Get a Free ATM for My Business</option>
+        <option value="atm-event">ATM for an Event</option>
+        <option value="sell-atm">Sell My ATM or Route</option>
+        <option value="merchant">Merchant Services / Payment Processing</option>
+        <option value="processing">Free ATM Processing</option>
+        <option value="other">Something Else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="c-msg">Message</label>
+      <textarea id="c-msg" name="message" rows="3" placeholder="Anything else we should know? (optional)"></textarea>
+    </div>
+
+    <p class="trust-line">Alabama-owned and operated. No spam. No pressure.</p>
+    <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;padding:16px;font-size:16px;">Send My Info</button>
+    <div class="contact-error" id="contact-error">Something went wrong. Please call us at <a href="tel:+12052108121" style="color:#991b1b;font-weight:700;">205-210-8121</a>.</div>
+  </form>
+
+  <div class="contact-success" id="contact-success">Got it! We'll be in touch soon.</div>
+
+  <div class="quick-links">
+    <div class="quick-links__heading">Explore Our Services</div>
+    <div class="quick-links__list">
+      <a href="free-atm-placement.html">Free ATM Placement</a>
+      <a href="atm-route-acquisition.html">Sell Your ATM or Route</a>
+      <a href="mobile-atm-events.html">ATM for Events</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  var success = document.getElementById('contact-success');
+  var error = document.getElementById('contact-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    error.style.display = 'none';
+
+    var data = new FormData(form);
+    data.append('access_key', '5f1be4ae-1027-4fc9-9698-db1b9a09a3c4');
+    data.append('subject', 'New Contact Form Submission — fordfrontierinvestments.com');
+    data.append('from_name', 'FFI Contact Form');
+
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res.success) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          error.style.display = 'block';
+        }
+      })
+      .catch(function () {
+        error.style.display = 'block';
+      });
+  });
+})();
+</script>
+</body>
+</html>
