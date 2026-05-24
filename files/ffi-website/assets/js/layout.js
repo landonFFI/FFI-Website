@@ -21,6 +21,7 @@ document.getElementById('site-nav').innerHTML = `
           <a href="${root}pages/atm-partnership.html">ATM Partnership Program</a>
           <a href="${root}pages/mobile-atm-events.html">Mobile ATMs for Events</a>
           <a href="${root}pages/cash-loading.html">Cash Loading Services</a>
+          <a href="${root}pages/outdoor-atm.html">Outdoor ATM Placement</a>
           <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
           <a href="${root}pages/atm-processing.html">ATM Processing</a>
           <a href="${root}pages/atm-route-acquisition.html">ATM Route Acquisition</a>
