@@ -99,6 +99,7 @@ if (form) {
         btn.style.background = '#2d7a3a';
         btn.style.borderColor = '#2d7a3a';
         form.reset();
+        fbq('track', 'Lead');
       } else {
         throw new Error('Submission failed');
       }
