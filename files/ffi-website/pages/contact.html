@@ -181,35 +181,5 @@
 <div id="site-footer"></div>
 <script src="../assets/js/layout.js"></script>
 <script src="../assets/js/main.js"></script>
-<script>
-(function () {
-  var form = document.getElementById('contact-form');
-  var success = document.getElementById('contact-success');
-  var error = document.getElementById('contact-error');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    error.style.display = 'none';
-
-    var data = new FormData(form);
-    data.append('access_key', '5f1be4ae-1027-4fc9-9698-db1b9a09a3c4');
-    data.append('subject', 'New Contact Form Submission — fordfrontierinvestments.com');
-    data.append('from_name', 'FFI Contact Form');
-
-    fetch('https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd', { method: 'POST', body: data })
-      .then(function (res) {
-        if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          error.style.display = 'block';
-        }
-      })
-      .catch(function () {
-        error.style.display = 'block';
-      });
-  });
-})();
-</script>
 </body>
 </html>
