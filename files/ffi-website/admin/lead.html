@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FFI — New Lead Entry</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../assets/css/mobile-fix.css" />
+  <style>
+    body {
+      background: #0d1b2a;
+      color: #e5e7eb;
+      min-height: 100vh;
+      font-family: var(--font-body, 'Inter', sans-serif);
+    }
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 360px;
+      background: #111e2d;
+      border: 1px solid #1e3148;
+      padding: 40px 28px;
+    }
+    .login-title {
+      font-family: var(--font-display, 'Oswald', sans-serif);
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c9a84c;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .login-sub {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      background: #0d1b2a;
+      border: 1px solid #1e3148;
+      color: #e5e7eb;
+      font-size: 16px;
+      font-family: inherit;
+      box-sizing: border-box;
+      margin-bottom: 14px;
+      border-radius: 0;
+    }
+    .login-box input[type="password"]:focus {
+      outline: 2px solid #c9a84c;
+      outline-offset: 0;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: #c9a84c;
+      color: #0d1b2a;
+      font-family: var(--font-display, 'Oswald', sans-serif);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+    }
+    .login-btn:hover { background: #b8953d; }
+    .login-error {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #f87171;
+      text-align: center;
+    }
+
+    /* ── LEAD FORM ── */
+    #lead-screen {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .lead-header {
+      margin-bottom: 28px;
+    }
+    .lead-title {
+      font-family: var(--font-display, 'Oswald', sans-serif);
+      font-size: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c9a84c;
+      margin-bottom: 4px;
+    }
+    .lead-sub {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .field label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #9ca3af;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 13px 14px;
+      background: #111e2d;
+      border: 1px solid #1e3148;
+      color: #e5e7eb;
+      font-size: 15px;
+      font-family: inherit;
+      box-sizing: border-box;
+      border-radius: 0;
+      appearance: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: 2px solid #c9a84c;
+      outline-offset: 0;
+    }
+    .field select { cursor: pointer; }
+    .field select option { background: #111e2d; }
+    .field textarea { resize: vertical; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #c9a84c;
+      color: #0d1b2a;
+      font-family: var(--font-display, 'Oswald', sans-serif);
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: #b8953d; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .msg-success {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: rgba(34,197,94,0.1);
+      border-left: 3px solid #22c55e;
+      color: #86efac;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .msg-error {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: rgba(239,68,68,0.1);
+      border-left: 3px solid #ef4444;
+      color: #fca5a5;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-title">FFI Admin</div>
+    <div class="login-sub">Internal use only</div>
+    <input type="password" id="pw-input" placeholder="Password" />
+    <button class="login-btn" id="pw-btn">Enter</button>
+    <div class="login-error" id="login-error">Incorrect password.</div>
+  </div>
+</div>
+
+<!-- LEAD FORM -->
+<div id="lead-screen">
+  <div class="lead-header">
+    <div class="lead-title">FFI — New Lead Entry</div>
+    <div class="lead-sub">Internal use only.</div>
+  </div>
+
+  <form id="lead-form">
+    <div class="field">
+      <label for="f-name">Name *</label>
+      <input type="text" id="f-name" name="name" placeholder="Contact name" required />
+    </div>
+    <div class="field">
+      <label for="f-phone">Phone *</label>
+      <input type="tel" id="f-phone" name="phone" placeholder="Best number" required />
+    </div>
+    <div class="field">
+      <label for="f-email">Email</label>
+      <input type="email" id="f-email" name="email" placeholder="Email address" />
+    </div>
+    <div class="field">
+      <label for="f-biz">Business Name</label>
+      <input type="text" id="f-biz" name="business_name" placeholder="Business name" />
+    </div>
+    <div class="field">
+      <label for="f-source">Source *</label>
+      <select id="f-source" name="source" required>
+        <option value="" disabled selected>Select source</option>
+        <option value="Facebook Marketplace">Facebook Marketplace</option>
+        <option value="Referral">Referral</option>
+        <option value="Cold Outreach">Cold Outreach</option>
+        <option value="Google Business Profile">Google Business Profile</option>
+        <option value="Walk In">Walk In</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-topic">Inquiry Type *</label>
+      <select id="f-topic" name="topic" required>
+        <option value="" disabled selected>Select inquiry type</option>
+        <option value="Get a Free ATM for My Business">Get a Free ATM for My Business</option>
+        <option value="ATM for an Event">ATM for an Event</option>
+        <option value="Sell My ATM or Route">Sell My ATM or Route</option>
+        <option value="Merchant Services / Payment Processing">Merchant Services / Payment Processing</option>
+        <option value="Free ATM Processing">Free ATM Processing</option>
+        <option value="Something Else">Something Else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-notes">Notes</label>
+      <textarea id="f-notes" name="message" rows="3" placeholder="Anything relevant from the conversation"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submit-btn">Add to Pipeline</button>
+    <div class="msg-success" id="msg-success">Lead added to pipeline.</div>
+    <div class="msg-error" id="msg-error">Something went wrong. Try again.</div>
+  </form>
+</div>
+
+<script>
+(function () {
+  var PASS = 'FairhopeGolf2016!';
+  var STORAGE_KEY = 'ffi_admin_auth';
+  var EXPIRY_MS = 24 * 60 * 60 * 1000;
+
+  function unlock() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('lead-screen').style.display = 'block';
+  }
+
+  // Check stored auth
+  var stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    try {
+      var parsed = JSON.parse(stored);
+      if (parsed.expires > Date.now()) {
+        unlock();
+      } else {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch (e) {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }
+
+  // Password submit on button click or Enter key
+  function tryLogin() {
+    var val = document.getElementById('pw-input').value;
+    var errEl = document.getElementById('login-error');
+    if (val === PASS) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ expires: Date.now() + EXPIRY_MS }));
+      errEl.style.display = 'none';
+      unlock();
+    } else {
+      errEl.style.display = 'block';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  }
+
+  document.getElementById('pw-btn').addEventListener('click', tryLogin);
+  document.getElementById('pw-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') tryLogin();
+  });
+
+  // Lead form submission
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('submit-btn');
+  var msgSuccess = document.getElementById('msg-success');
+  var msgError = document.getElementById('msg-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    msgSuccess.style.display = 'none';
+    msgError.style.display = 'none';
+
+    var data = new FormData(form);
+
+    fetch('https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd', {
+      method: 'POST',
+      body: data
+    })
+      .then(function (res) {
+        if (res.ok) {
+          msgSuccess.style.display = 'block';
+          // Save source, reset everything else
+          var savedSource = document.getElementById('f-source').value;
+          form.reset();
+          document.getElementById('f-source').value = savedSource;
+          btn.disabled = false;
+          btn.textContent = 'Add to Pipeline';
+        } else {
+          throw new Error('not ok');
+        }
+      })
+      .catch(function () {
+        msgError.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Add to Pipeline';
+      });
+  });
+})();
+</script>
+</body>
+</html>
