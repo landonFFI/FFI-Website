@@ -88,16 +88,6 @@ if (form) {
     btn.disabled = true;
 
     const formData = new FormData(form);
-    // Build a readable message body
-    const fields = [
-      'first_name', 'last_name', 'business', 'phone', 'email', 'city', 'service', 'message'
-    ];
-    let body = '';
-    fields.forEach(f => {
-      const val = formData.get(f);
-      if (val) body += `${f.replace('_', ' ').toUpperCase()}: ${val}\n`;
-    });
-    formData.set('message', body);
 
     try {
       const res = await fetch('https://hook.us2.make.com/aq1gnoiw6yd807k79n4v7ahbgqhvyjsd', {
