@@ -197,6 +197,9 @@ document.getElementById('site-footer').innerHTML = `
       </div>
     </div>
   </div>
+  <div style="text-align:center;padding:8px 0 4px;border-top:1px solid #222;margin-top:12px;">
+    <a href="/admin/lead.html" target="_blank" style="color:#444;font-size:11px;text-decoration:none;letter-spacing:1px;">ADMIN</a>
+  </div>
 </footer>`;
 
 // ── SITEWIDE CART (buy-atm page only) ──
