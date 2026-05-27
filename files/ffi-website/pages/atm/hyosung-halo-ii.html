@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buy Hyosung Halo II ATM | From $2,785 | Ford Frontier Investments Alabama</title>
-  <meta name="description" content="Buy the Hyosung Halo II ATM — the industry's best-selling retail ATM. Starting at $2,785. Free shipping nationwide. Full processing setup included. Order online from Ford Frontier Investments." />
+  <title>Buy Hyosung Halo II ATM | From $2,585 | Ford Frontier Investments Alabama</title>
+  <meta name="description" content="Buy the Hyosung Halo II — the industry's best-selling retail ATM. Starting at $2,585. Free nationwide shipping. Processing setup included. Configure online and order today. (205) 210-8121." />
   <link rel="canonical" href="https://fordfrontierinvestments.com/pages/atm/hyosung-halo-ii.html" />
 
   <!-- JSON-LD Product Schema for Google -->
@@ -18,15 +18,28 @@
     "image": "https://hyosungamericas.com/wp-content/uploads/2023/06/Hyosung-MX2600SEHALO-2_front-e1689144081681.png",
     "offers": {
       "@type": "AggregateOffer",
-      "lowPrice": "2785",
-      "highPrice": "3871",
+      "lowPrice": "2585",
+      "highPrice": "4525",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
-      "seller": { "@type": "Organization", "name": "Ford Frontier Investments" }
+      "seller": { "@type": "Organization", "name": "Ford Frontier Investments" },
+      "offerCount": "4",
+      "description": "Prices vary by cassette size (1K: $2,585 / 2K: $2,900 / Dual 1K: $3,005 / Dual 2K: $3,530) and optional add-ons (Factory Programming: +$200, NFC Contactless: +$495, Outside Processor: +$500). Credit card payment adds approximately 4%."
     }
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fordfrontierinvestments.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Buy an ATM", "item": "https://fordfrontierinvestments.com/pages/buy-atm.html"},
+      {"@type": "ListItem", "position": 3, "name": "Hyosung Halo II", "item": "https://fordfrontierinvestments.com/pages/atm/hyosung-halo-ii.html"}
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="stylesheet" href="../../assets/css/mobile-fix.css" />
 
@@ -594,6 +607,13 @@
       .checkout-row { grid-template-columns: 1fr; }
       .checkout-modal { padding: 32px 24px; }
     }
+    .no-payment-notice {
+      font-size: 0.78rem;
+      color: rgba(13,27,42,0.55);
+      margin-top: 8px;
+      text-align: center;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -770,10 +790,11 @@
             </div>
             <p class="price-note">No payment collected now. We'll contact you within 24 hours.</p>
             <button class="btn btn--primary" style="width:100%;justify-content:center;padding:18px;font-size:14px;" onclick="addToCart()">
-              Add to Cart →
+              Configure &amp; Request Pricing →
             </button>
+            <p class="no-payment-notice">✓ No payment collected online — we contact you within 24 hours to confirm, collect payment, and send paperwork.</p>
             <div style="display:flex;gap:12px;margin-top:10px;">
-              <a href="tel:2052108121" class="btn btn--outline-dark" style="flex:1;justify-content:center;font-size:11px;">(205) 210-8121</a>
+              <a href="tel:+12052108121" class="btn btn--outline-dark" style="flex:1;justify-content:center;font-size:11px;">(205) 210-8121</a>
               <a href="../../index.html#contact" class="btn btn--ghost" style="flex:1;justify-content:center;font-size:11px;">Ask a Question</a>
             </div>
           </div>
@@ -820,7 +841,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-item__q">What surcharge should I set?</div>
-        <div class="faq-item__a">Most retail ATMs charge between $2.50 and $3.50 per transaction. The right amount depends on your location type — bars and nightclubs typically support higher surcharges ($3.00–$3.50), while convenience stores and gas stations usually do best around $2.50–$3.00. We'll help you set the right surcharge for your specific location when we handle your processing setup.</div>
+        <div class="faq-item__a">The Alabama market average surcharge is approximately $3.75 per transaction. The right amount for your specific location depends on your customer base, business type, and local competition. Bars and nightclubs typically support $3.50–$4.00. Convenience stores and gas stations typically range from $3.00–$3.75. We help you set the right surcharge for your specific location during processing setup — call us at (205) 210-8121 to discuss before you finalize.</div>
       </div>
     </div>
   </div>
@@ -843,7 +864,7 @@
     <h2>Ready to Own Your ATM?</h2>
     <p>Configure above and add to cart — or call us to order over the phone.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="tel:2052108121" class="btn btn--primary">(205) 210-8121</a>
+      <a href="tel:+12052108121" class="btn btn--primary">(205) 210-8121</a>
       <a href="../buy-atm.html" class="btn btn--outline">Browse All ATMs</a>
     </div>
   </div>
@@ -851,16 +872,6 @@
 
 <div id="site-footer"></div>
 <script src="../../assets/js/layout.js"></script>
-<script>
-  // layout.js detects /pages/ and sets root='../' but this page is /pages/atm/
-  // so all links are one level short. Fix by prepending '../' to all relative hrefs.
-  document.querySelectorAll('a[href]').forEach(function(a) {
-    const h = a.getAttribute('href');
-    if (h && h.startsWith('../') && !h.startsWith('../../') && !h.startsWith('http') && !h.startsWith('tel') && !h.startsWith('mailto')) {
-      a.setAttribute('href', '../' + h);
-    }
-  });
-</script>
 <script src="../../assets/js/main.js"></script>
 
 <script>

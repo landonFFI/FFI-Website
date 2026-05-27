@@ -1708,3 +1708,132 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   }
 }
 /* ===== END FAQ SECTION ===== */
+
+/* ===== SELL-YOUR-ATM ENHANCEMENTS ===== */
+.persona-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold, #c8a84b);
+  margin-bottom: 10px;
+}
+
+.form-or-divider {
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+  margin: 16px 0;
+  letter-spacing: 0.1em;
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* ===== MULTI-LOCATION COMPARISON GRID ===== */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 32px 0;
+  background: rgba(200,168,75,0.08);
+}
+
+.comparison-col {
+  padding: 32px;
+  background: #0d1b2a;
+}
+
+.comparison-col--good {
+  background: #0f2438;
+}
+
+.comparison-col__label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+}
+
+.comparison-col--bad .comparison-col__label { color: rgba(200,60,60,0.8); }
+.comparison-col--good .comparison-col__label { color: #c8a84b; }
+
+.comparison-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparison-list li {
+  padding: 8px 0 8px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.comparison-list li:last-child { border-bottom: none; }
+.comparison-list--bad li { color: rgba(255,255,255,0.45); }
+.comparison-list--bad li::before { content: '✗'; position: absolute; left: 0; color: rgba(200,60,60,0.7); }
+.comparison-list--good li { color: rgba(255,255,255,0.8); }
+.comparison-list--good li::before { content: '✓'; position: absolute; left: 0; color: #c8a84b; }
+
+@media (max-width: 640px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== BLOG CARD TYPOGRAPHIC THUMBNAILS ===== */
+.blog-card__thumb {
+  height: 180px;
+  background: var(--navy, #0d1b2a);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card__thumb::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(200,168,75,0.08) 0%, transparent 70%);
+}
+
+.blog-card__cat-thumb {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #c8a84b;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-card__initial {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,0.08);
+  font-family: var(--font-display, 'Oswald', sans-serif);
+  position: relative;
+  z-index: 1;
+}

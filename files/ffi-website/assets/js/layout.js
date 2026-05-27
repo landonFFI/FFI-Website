@@ -226,7 +226,7 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
           <span class="cart-total__amount" id="cart-total-amt">$0</span>
         </div>
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. You will NOT be charged now — we will contact you within 24 hours to confirm your order and process payment.</p>
-        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Submit My Order Request →</button>
       </div>
     </div>
     <div class="checkout-overlay" id="checkout-overlay">

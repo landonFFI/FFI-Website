@@ -127,6 +127,21 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Sell Your ATM -->
+  <url>
+    <loc>https://fordfrontierinvestments.com/pages/sell-your-atm.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://fordfrontierinvestments.com/pages/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Company -->
   <url>
     <loc>https://fordfrontierinvestments.com/pages/about.html</loc>
