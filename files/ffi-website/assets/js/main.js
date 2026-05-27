@@ -78,6 +78,24 @@ if (statEls.length) {
   statEls.forEach(el => counterObserver.observe(el));
 }
 
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var isOpen = this.getAttribute('aria-expanded') === 'true';
+    // Close all
+    document.querySelectorAll('.faq-question').forEach(function(b) {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // Open this one if it was closed
+    if (!isOpen) {
+      this.setAttribute('aria-expanded', 'true');
+      answer.classList.add('open');
+    }
+  });
+});
+
 // ── CONTACT FORM → Web3Forms (sends to Landon@fordfrontierinvestments.com) ──
 const form = document.getElementById('contact-form');
 if (form) {
