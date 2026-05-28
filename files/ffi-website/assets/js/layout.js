@@ -69,7 +69,7 @@ document.getElementById('site-nav').innerHTML = `
       <a href="${root}pages/blog.html" class="nav__link--aux">Blog</a>
     </div>
     <div class="nav-right">
-      <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
+      <a href="tel:+12052108121" class="nav__phone">📞 (205) 210-8121</a>
       <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
     </div>
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
@@ -151,9 +151,14 @@ document.getElementById('site-footer').innerHTML = `
         <div class="footer__brand-name">Ford Frontier <span>Investments</span></div>
         <div class="footer__brand-tag">Alabama's ATM Experts</div>
         <p class="footer__brand-desc">Independent ATM Deployer (IAD) headquartered in Birmingham, Alabama. We install, service, and operate ATMs for businesses across Alabama — at no cost to you. We process all major networks.</p>
-        <div class="footer__contact-item">📞 <a href="tel:2052108121">(205) 210-8121</a></div>
+        <div class="footer__contact-item">📞 <a href="tel:+12052108121">(205) 210-8121</a></div>
         <div class="footer__contact-item">✉ <a href="mailto:Landon@fordfrontierinvestments.com">Landon@fordfrontierinvestments.com</a></div>
         <div class="footer__contact-item">📍 Birmingham, Alabama</div>
+        <div class="footer-nap" itemscope itemtype="https://schema.org/LocalBusiness">
+          <span itemprop="name">Ford Frontier Investments</span> ·
+          <a href="tel:+12052108121" itemprop="telephone" style="color:rgba(255,255,255,0.4);">(205) 210-8121</a> ·
+          <span itemprop="addressLocality">Birmingham</span>, <span itemprop="addressRegion">AL</span>
+        </div>
       </div>
       <div class="footer__col">
         <div class="footer__col-title">ATM Services</div>

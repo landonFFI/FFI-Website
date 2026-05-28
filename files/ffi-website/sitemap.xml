@@ -5,6 +5,7 @@
     <loc>https://fordfrontierinvestments.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
 
   <!-- ATM Services -->
@@ -24,6 +25,7 @@
     <loc>https://fordfrontierinvestments.com/pages/mobile-atm-events.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-28</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/cash-loading.html</loc>
@@ -34,6 +36,7 @@
     <loc>https://fordfrontierinvestments.com/pages/outdoor-atm.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/wireless-atm.html</loc>
@@ -76,21 +79,25 @@
     <loc>https://fordfrontierinvestments.com/pages/atm-birmingham-al.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/atm-montgomery-al.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/atm-tuscaloosa-al.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/tuscaloosa-strip.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
 
   <!-- Service Areas — Venue Types -->
@@ -98,21 +105,25 @@
     <loc>https://fordfrontierinvestments.com/pages/bars-nightclubs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/convenience-stores.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/gentlemens-clubs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/gas-stations.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
   <url>
     <loc>https://fordfrontierinvestments.com/pages/multi-location.html</loc>
@@ -123,6 +134,7 @@
     <loc>https://fordfrontierinvestments.com/pages/laundromats-barbershops.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-05-27</lastmod>
   </url>
 
   <!-- Sell Your ATM -->
