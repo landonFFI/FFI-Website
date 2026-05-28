@@ -69,7 +69,7 @@ document.getElementById('site-nav').innerHTML = `
       <a href="${root}pages/blog.html" class="nav__link--aux">Blog</a>
     </div>
     <div class="nav-right">
-      <a href="tel:2052108121" class="nav__phone">📞 (205) 210-8121</a>
+      <a href="tel:+12052108121" class="nav__phone">📞 (205) 210-8121</a>
       <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
     </div>
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
@@ -147,50 +147,80 @@ document.getElementById('site-footer').innerHTML = `
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
+
+      <!-- BRAND + CONTACT -->
       <div>
         <div class="footer__brand-name">Ford Frontier <span>Investments</span></div>
         <div class="footer__brand-tag">Alabama's ATM Experts</div>
         <p class="footer__brand-desc">Independent ATM Deployer (IAD) headquartered in Birmingham, Alabama. We install, service, and operate ATMs for businesses across Alabama — at no cost to you. We process all major networks.</p>
-        <div class="footer__contact-item">📞 <a href="tel:2052108121">(205) 210-8121</a></div>
+        <div class="footer__contact-item">📞 <a href="tel:+12052108121">(205) 210-8121</a></div>
         <div class="footer__contact-item">✉ <a href="mailto:Landon@fordfrontierinvestments.com">Landon@fordfrontierinvestments.com</a></div>
         <div class="footer__contact-item">📍 Birmingham, Alabama</div>
+        <div class="footer-nap" itemscope itemtype="https://schema.org/LocalBusiness">
+          <span itemprop="name">Ford Frontier Investments</span> ·
+          <a href="tel:+12052108121" itemprop="telephone" style="color:rgba(255,255,255,0.4);">(205) 210-8121</a> ·
+          <span itemprop="addressLocality">Birmingham</span>, <span itemprop="addressRegion">AL</span>
+        </div>
       </div>
+
+      <!-- ATM SERVICES -->
       <div class="footer__col">
         <div class="footer__col-title">ATM Services</div>
         <a href="${root}pages/free-atm-placement.html">Free ATM Placement</a>
         <a href="${root}pages/atm-partnership.html">ATM Partnership</a>
-        <a href="${root}pages/buy-atm.html">Buy an ATM</a>
-        <a href="${root}pages/mobile-atm-events.html">Mobile ATMs for Events</a>
+        <a href="${root}pages/outdoor-atm.html">Outdoor ATM</a>
+        <a href="${root}pages/wireless-atm.html">Wireless ATM</a>
         <a href="${root}pages/cash-loading.html">Cash Loading</a>
-        <a href="${root}pages/wireless-atm.html">Wireless ATM Service</a>
         <a href="${root}pages/atm-processing.html">ATM Processing</a>
+        <a href="${root}pages/mobile-atm-events.html">ATMs for Events</a>
+        <a href="${root}pages/sell-your-atm.html">Sell Your ATM</a>
         <a href="${root}pages/atm-route-acquisition.html">Route Acquisition</a>
       </div>
+
+      <!-- BUY AN ATM + PAYMENT SERVICES -->
       <div class="footer__col">
-        <div class="footer__col-title">Payment Services</div>
+        <div class="footer__col-title">Buy an ATM</div>
+        <a href="${root}pages/buy-atm.html">ATM Catalog</a>
+        <a href="${root}pages/atm/hyosung-halo-ii.html">Hyosung Halo II</a>
+        <a href="${root}pages/buy-atm.html#hyosung">All Hyosung Models</a>
+        <a href="${root}pages/buy-atm.html#genmega">All Genmega Models</a>
+        <a href="${root}pages/buy-atm.html#used">Refurbished ATMs</a>
+        <div class="footer__col-title" style="margin-top: 20px;">Payment Services</div>
         <a href="${root}pages/merchant-services.html">Merchant Services</a>
         <a href="${root}pages/merchant-services.html#rate-tracker">Rate Tracker Program</a>
-        <a href="${root}pages/atm-processing.html">ATM Transaction Processing</a>
-        <a href="${root}pages/wireless-atm.html">Wireless Connectivity</a>
       </div>
+
+      <!-- WHO WE SERVE -->
+      <div class="footer__col">
+        <div class="footer__col-title">Who We Serve</div>
+        <a href="${root}pages/bars-nightclubs.html">Bars &amp; Nightclubs</a>
+        <a href="${root}pages/gentlemens-clubs.html">Gentlemen's Clubs</a>
+        <a href="${root}pages/gas-stations.html">Gas Stations</a>
+        <a href="${root}pages/convenience-stores.html">Convenience Stores</a>
+        <a href="${root}pages/laundromats-barbershops.html">Laundromats &amp; Barbershops</a>
+        <a href="${root}pages/multi-location.html">Multi-Location Owners</a>
+        <a href="${root}pages/tuscaloosa-strip.html">Tuscaloosa Strip</a>
+        <a href="${root}pages/mobile-atm-events.html">Events &amp; Festivals</a>
+      </div>
+
+      <!-- SERVICE AREAS + COMPANY -->
       <div class="footer__col">
         <div class="footer__col-title">Service Areas</div>
-              <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
+        <a href="${root}pages/atm-birmingham-al.html">Birmingham, AL</a>
         <a href="${root}pages/atm-montgomery-al.html">Montgomery, AL</a>
         <a href="${root}pages/atm-tuscaloosa-al.html">Tuscaloosa, AL</a>
+        <a href="${root}pages/tuscaloosa-strip.html">Tuscaloosa Strip</a>
         <a href="${root}index.html#contact">All of Alabama</a>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Company</div>
+        <div class="footer__col-title" style="margin-top: 20px;">Company</div>
         <a href="${root}pages/about.html">About Ford Frontier</a>
         <a href="${root}pages/contact.html">Contact Us</a>
         <a href="${root}pages/faq.html">FAQ</a>
         <a href="${root}pages/blog.html">ATM Business Blog</a>
-        <a href="${root}pages/buy-atm.html">ATM Catalog</a>
       </div>
+
     </div>
     <div class="footer__bottom">
-      <div class="footer__copy">© 2025 Ford Frontier Investments, LLC. All rights reserved. Birmingham, Alabama.</div>
+      <div class="footer__copy">© 2026 Ford Frontier Investments, LLC. All rights reserved. Birmingham, Alabama.</div>
       <div class="footer__legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
@@ -226,7 +256,7 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
           <span class="cart-total__amount" id="cart-total-amt">$0</span>
         </div>
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. You will NOT be charged now — we will contact you within 24 hours to confirm your order and process payment.</p>
-        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Submit My Order Request →</button>
       </div>
     </div>
     <div class="checkout-overlay" id="checkout-overlay">
