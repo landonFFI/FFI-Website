@@ -306,12 +306,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm); padding: 0.75rem 1.75rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; border-radius: var(--border-radius); border: 2px solid transparent; cursor: pointer; transition: all var(--transition); white-space: nowrap; line-height: 1; }
 .btn--primary { background-color: var(--color-accent); color: var(--color-primary-dark); border-color: var(--color-accent); }
 .btn--primary:hover { background-color: var(--color-accent-hover); border-color: var(--color-accent-hover); color: var(--color-primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,23,.35); }
-.btn--secondary { background-color: rgba(255, 255, 255, 0.12); color: #ffffff; border-color: rgba(255, 255, 255, 0.65); }
-.btn--secondary:hover { background-color: rgba(255, 255, 255, 0.22); border-color: #ffffff; color: #ffffff; transform: translateY(-1px); }
-.btn--outline { background-color: rgba(255, 255, 255, 0.10); color: #ffffff; border-color: rgba(255, 255, 255, 0.55); }
-.btn--outline:hover { background-color: rgba(255, 255, 255, 0.20); border-color: #ffffff; color: #ffffff; transform: translateY(-1px); }
-.btn--ghost { background-color: rgba(255, 255, 255, 0.10); color: rgba(255, 255, 255, 0.90); border-color: rgba(255, 255, 255, 0.50); }
-.btn--ghost:hover { background-color: rgba(255, 255, 255, 0.20); border-color: rgba(255, 255, 255, 0.80); color: #ffffff; }
+/* btn--secondary, outline, ghost — see DEFINITIVE BUTTON VISIBILITY FIX at bottom */
 .btn--sm { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
 .btn--lg { padding: 1rem 2.25rem; font-size: 1rem; }
 
@@ -850,61 +845,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   transform: translateY(0);
 }
 
-/* ── BUTTONS (extra variants used in HTML) ── */
-.btn--outline-dark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: 0.75rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  background-color: rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.90);
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  border-radius: var(--border-radius);
-  transition: all var(--transition);
-}
-.btn--outline-dark:hover {
-  background-color: rgba(255, 255, 255, 0.20);
-  border-color: #ffffff;
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-.btn--ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: 0.6rem 1.2rem;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  background-color: rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.90);
-  border: 2px solid rgba(255, 255, 255, 0.50);
-  border-radius: var(--border-radius);
-  transition: all var(--transition);
-}
-.btn--ghost:hover {
-  background-color: rgba(255, 255, 255, 0.20);
-  border-color: rgba(255, 255, 255, 0.80);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
+/* btn--outline-dark, btn--ghost — see DEFINITIVE BUTTON VISIBILITY FIX at bottom */
 
 /* ── SERVICES GRID (matches .services-grid in HTML) ── */
 .services-grid {
@@ -1109,7 +1050,7 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   font-weight: 700;
   flex-shrink: 0;
 }
-/* ATM card buttons — cards have dark navy backgrounds */
+/* ATM card size/layout only — colors handled by DEFINITIVE FIX at bottom */
 .atm-card .btn--primary,
 .atm-card .btn--outline-dark,
 .atm-card .btn--ghost,
@@ -1117,21 +1058,6 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
   width: 100%;
   justify-content: center;
   text-align: center;
-}
-/* On dark ATM cards, outline buttons need white treatment */
-.atm-card .btn--outline,
-.atm-card .btn--ghost,
-.atm-card .btn--outline-dark {
-  background-color: rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.90);
-  border-color: rgba(255, 255, 255, 0.55);
-}
-.atm-card .btn--outline:hover,
-.atm-card .btn--ghost:hover,
-.atm-card .btn--outline-dark:hover {
-  background-color: rgba(255, 255, 255, 0.22);
-  border-color: #ffffff;
-  color: #ffffff;
 }
 
 /* ── HOW IT WORKS / STEPS ── */
@@ -2261,87 +2187,94 @@ h1 em, h2 em { font-style: italic; color: var(--color-accent); }
 }
 
 /* ============================================================
-   BUTTON CONTRAST — LIGHT BACKGROUND OVERRIDES
-   Applies when buttons appear inside light sections
+   DEFINITIVE BUTTON VISIBILITY FIX
+   All non-primary variants — visible on dark backgrounds
+   Added: May 2026 — overrides all previous button rules
    ============================================================ */
 
-/* On light/white section backgrounds, secondary/ghost/outline buttons
-   flip to dark treatment for contrast */
+.btn--secondary,
+.btn--outline,
+.btn--ghost,
+.btn--outline-dark {
+  background-color: rgba(255, 255, 255, 0.13) !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: var(--border-radius) !important;
+}
+
+.btn--secondary:hover,
+.btn--outline:hover,
+.btn--ghost:hover,
+.btn--outline-dark:hover {
+  background-color: rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.10) !important;
+}
+
+/* ATM cards — same treatment */
+.atm-card .btn--outline,
+.atm-card .btn--ghost,
+.atm-card .btn--outline-dark,
+.atm-card .btn--secondary {
+  background-color: rgba(255, 255, 255, 0.13) !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.60) !important;
+}
+
+.atm-card .btn--outline:hover,
+.atm-card .btn--ghost:hover,
+.atm-card .btn--outline-dark:hover,
+.atm-card .btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+}
+
+/* Light section override — white/gray backgrounds */
 .section--light .btn--secondary,
-.section--light .btn--ghost,
 .section--light .btn--outline,
+.section--light .btn--ghost,
 .section--light .btn--outline-dark,
 .section--gray .btn--secondary,
-.section--gray .btn--ghost,
 .section--gray .btn--outline,
-.section--gray .btn--outline-dark,
-.contact-wrap .btn--ghost,
-.contact-wrap .btn--outline,
-.configurator .btn--ghost,
-.configurator .btn--outline-dark {
-  background-color: rgba(13, 27, 42, 0.07);
-  color: var(--color-primary, #0d1b2a);
-  border-color: rgba(13, 27, 42, 0.45);
+.section--gray .btn--ghost,
+.section--gray .btn--outline-dark {
+  background-color: rgba(13, 27, 42, 0.08) !important;
+  color: var(--color-primary, #0d1b2a) !important;
+  border-color: rgba(13, 27, 42, 0.50) !important;
 }
 
 .section--light .btn--secondary:hover,
-.section--light .btn--ghost:hover,
 .section--light .btn--outline:hover,
+.section--light .btn--ghost:hover,
 .section--light .btn--outline-dark:hover,
 .section--gray .btn--secondary:hover,
-.section--gray .btn--ghost:hover,
 .section--gray .btn--outline:hover,
-.section--gray .btn--outline-dark:hover,
-.contact-wrap .btn--ghost:hover,
-.contact-wrap .btn--outline:hover,
+.section--gray .btn--ghost:hover,
+.section--gray .btn--outline-dark:hover {
+  background-color: var(--color-primary, #0d1b2a) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary, #0d1b2a) !important;
+}
+
+/* Configurator panel is white background */
+.configurator .btn--outline-dark,
+.configurator .btn--ghost,
+.configurator .btn--outline {
+  background-color: rgba(13, 27, 42, 0.07) !important;
+  color: var(--navy, #0d1b2a) !important;
+  border-color: rgba(13, 27, 42, 0.40) !important;
+}
+
+.configurator .btn--outline-dark:hover,
 .configurator .btn--ghost:hover,
-.configurator .btn--outline-dark:hover {
-  background-color: var(--color-primary, #0d1b2a);
-  color: #ffffff;
-  border-color: var(--color-primary, #0d1b2a);
-  transform: translateY(-1px);
+.configurator .btn--outline:hover {
+  background-color: rgba(13, 27, 42, 0.15) !important;
+  color: var(--navy, #0d1b2a) !important;
+  border-color: rgba(13, 27, 42, 0.65) !important;
 }
 
-/* CTA band overrides — .cta-band is always dark, ensure buttons visible */
-.cta-band .btn--outline,
-.cta-band .btn--ghost,
-.cta-band .btn--outline-dark,
-.cta-band .btn--secondary {
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.65);
-}
-.cta-band .btn--outline:hover,
-.cta-band .btn--ghost:hover,
-.cta-band .btn--outline-dark:hover,
-.cta-band .btn--secondary:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  border-color: #ffffff;
-  color: #ffffff;
-}
-
-/* Hero section — always dark background */
-.hero .btn--outline,
-.hero .btn--ghost,
-.hero .btn--outline-dark,
-.hero .btn--secondary,
-.page-hero .btn--outline,
-.page-hero .btn--ghost,
-.page-hero .btn--outline-dark,
-.page-hero .btn--secondary {
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.65);
-}
-.hero .btn--outline:hover,
-.hero .btn--ghost:hover,
-.hero .btn--outline-dark:hover,
-.hero .btn--secondary:hover,
-.page-hero .btn--outline:hover,
-.page-hero .btn--ghost:hover,
-.page-hero .btn--outline-dark:hover,
-.page-hero .btn--secondary:hover {
-  background-color: rgba(255, 255, 255, 0.22);
-  border-color: #ffffff;
-  color: #ffffff;
-}
+/* Never touch primary or size modifiers */
+/* .btn--primary, .btn--sm, .btn--lg — DO NOT MODIFY */
