@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    { "source": "/alabama-atm-services", "destination": "/pages/free-atm-placement.html", "permanent": true },
+    { "source": "/free-atm-placement", "destination": "/pages/free-atm-placement.html", "permanent": true },
+    { "source": "/gas-station-atm", "destination": "/pages/gas-stations.html", "permanent": true },
+    { "source": "/festival-and-event-atm", "destination": "/pages/mobile-atm-events.html", "permanent": true },
+    { "source": "/contact", "destination": "/pages/contact.html", "permanent": true },
+    { "source": "/new-page", "destination": "/", "permanent": true },
+    { "source": "/florida-atm-services", "destination": "/", "permanent": true },
+    { "source": "/dispensary-atm", "destination": "/", "permanent": true },
+    { "source": "/payment-processing", "destination": "/pages/merchant-services.html", "permanent": true },
+    { "source": "/atm-partnership-program", "destination": "/pages/atm-partnership.html", "permanent": true }
+  ]
+}
