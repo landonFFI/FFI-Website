@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "files/ffi-website",
   "redirects": [
     { "source": "/alabama-atm-services", "destination": "/pages/free-atm-placement.html", "permanent": true },
     { "source": "/free-atm-placement", "destination": "/pages/free-atm-placement.html", "permanent": true },
