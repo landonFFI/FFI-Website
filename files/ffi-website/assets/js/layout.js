@@ -190,10 +190,10 @@ document.getElementById('site-footer').innerHTML = `
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="footer__copy">© 2025 Ford Frontier Investments, LLC. All rights reserved. Birmingham, Alabama.</div>
+      <div class="footer__copy">© 2026 Ford Frontier Investments, LLC. All rights reserved. Birmingham, Alabama.</div>
       <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="${root}pages/privacy-policy.html">Privacy Policy</a>
+        <a href="${root}pages/terms-of-service.html">Terms of Service</a>
       </div>
     </div>
   </div>
@@ -226,7 +226,7 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
           <span class="cart-total__amount" id="cart-total-amt">$0</span>
         </div>
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. You will NOT be charged now — we will contact you within 24 hours to confirm your order and process payment.</p>
-        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Submit My Order Request →</button>
       </div>
     </div>
     <div class="checkout-overlay" id="checkout-overlay">
@@ -290,8 +290,6 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
 
   // ── CART STATE (global so product pages can call window.ffiCart.add()) ──
   window.ffiCart = (function() {
-    const FORMSPREE = 'https://formspree.io/f/YOUR_FORM_ID';
-
     let cart = [];
 
     function fmt(n) {
@@ -365,53 +363,57 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
     }
 
     function submitOrder() {
-      const first   = document.getElementById('co-first').value.trim();
-      const last    = document.getElementById('co-last').value.trim();
-      const email   = document.getElementById('co-email').value.trim();
-      const phone   = document.getElementById('co-phone').value.trim();
-      const address = document.getElementById('co-address').value.trim();
-      const biz     = document.getElementById('co-biz').value.trim();
-      const notes   = document.getElementById('co-notes').value.trim();
-      const err     = document.getElementById('co-error');
+      const first   = document.getElementById("co-first").value.trim();
+      const last    = document.getElementById("co-last").value.trim();
+      const email   = document.getElementById("co-email").value.trim();
+      const phone   = document.getElementById("co-phone").value.trim();
+      const address = document.getElementById("co-address").value.trim();
+      const biz     = document.getElementById("co-biz").value.trim();
+      const notes   = document.getElementById("co-notes").value.trim();
+      const err     = document.getElementById("co-error");
 
       if (!first || !last || !email || !phone || !address) {
-        err.textContent = 'Please fill in all required fields.';
-        err.style.display = 'block';
+        err.textContent = "Please fill in all required fields.";
+        err.style.display = "block";
         return;
       }
-      if (!/\S+@\S+\.\S+/.test(email)) {
-        err.textContent = 'Please enter a valid email address.';
-        err.style.display = 'block';
-        return;
-      }
-      err.style.display = 'none';
 
       const total = cart.reduce(function(s, i) { return s + i.price; }, 0);
-      const orderDetails = cart.map(function(item) {
-        return item.machine + ' — ' + item.cassette +
-          (item.addons.length ? ' + ' + item.addons.join(', ') : '') +
-          ' (' + item.payment + '): ' + fmt(item.price);
-      }).join('\n');
 
-      fetch(FORMSPREE, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      const orderDetails = cart.map(function(item) {
+        return item.machine + " — " + item.cassette +
+          (item.addons.length ? " + " + item.addons.join(", ") : "") +
+          " (" + item.payment + "): $" + item.price.toFixed(2);
+      }).join("\n");
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: first + ' ' + last,
-          email: email, phone: phone,
-          business: biz || 'Not provided',
+          access_key: "958f885c-03f9-4196-8b83-7889c2b79cd0",
+          subject: "New ATM Order — " + first + " " + last + " — $" + total.toFixed(2),
+          from_name: "FFI ATM Order Form",
+          name: first + " " + last,
+          email: email,
+          phone: phone,
+          business: biz || "Not provided",
           shipping_address: address,
           order_details: orderDetails,
-          order_total: fmt(total),
-          notes: notes || 'None',
-          _subject: 'New ATM Order — ' + first + ' ' + last + ' — ' + fmt(total)
+          order_total: "$" + total.toFixed(2),
+          notes: notes || "None"
         })
-      }).finally(function() {
-        document.getElementById('checkout-form-wrap').style.display = 'none';
-        document.getElementById('success-state').style.display = 'block';
-        document.getElementById('success-email').textContent = email;
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        document.getElementById("checkout-form-wrap").style.display = "none";
+        document.getElementById("success-state").style.display = "block";
+        document.getElementById("success-email").textContent = email;
         cart = [];
         render();
+      })
+      .catch(function() {
+        err.textContent = "Something went wrong. Please call (205) 210-8121 to place your order.";
+        err.style.display = "block";
       });
     }
 
