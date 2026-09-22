@@ -744,21 +744,6 @@
             </div>
           </div>
 
-          <!-- Payment Method -->
-          <div class="config-section">
-            <span class="config-label">Step 3 — Payment Method</span>
-            <div style="display:flex;gap:8px;">
-              <div class="cassette-opt selected" id="pay-ach" onclick="selectPayment('ach')" style="flex:1;">
-                <div class="cassette-opt__name">ACH / Check</div>
-                <div class="cassette-opt__price">Best Price</div>
-              </div>
-              <div class="cassette-opt" id="pay-card" onclick="selectPayment('card')" style="flex:1;">
-                <div class="cassette-opt__name">Credit Card</div>
-                <div class="cassette-opt__price">+~4%</div>
-              </div>
-            </div>
-          </div>
-
           <!-- Price -->
           <div style="padding-top:8px;">
             <div class="price-display">
@@ -768,7 +753,7 @@
             <div class="price-breakdown" id="price-breakdown">
               <span>$2,585</span> base · Free shipping
             </div>
-            <p class="price-note">No payment collected now. We'll contact you within 24 hours.</p>
+            <p class="price-note">Pay securely by card or bank account (ACH) at checkout.</p>
             <button class="btn btn--primary" style="width:100%;justify-content:center;padding:18px;font-size:14px;" onclick="addToCart()">
               Add to Cart →
             </button>
@@ -812,7 +797,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-item__q">How does the ordering process work?</div>
-        <div class="faq-item__a">Configure your Halo II using the options above, add it to your cart, then fill out your contact and shipping info at checkout. No payment is collected online — we'll contact you within 24 hours to confirm your order, collect payment via ACH or credit card, and send you the processing paperwork to get your machine set up. Once payment and paperwork are complete, your ATM ships directly from the factory.</div>
+        <div class="faq-item__a">Configure your Halo II using the options above, add it to your cart, then check out securely with a card or bank account (ACH). After your order is paid, we'll contact you within 24 hours to send the processing paperwork to get your machine set up. Once paperwork is complete, your ATM ships directly from the factory.</div>
       </div>
       <div class="faq-item">
         <div class="faq-item__q">How long does shipping take?</div>
@@ -867,8 +852,14 @@
   // ── STATE ──
   let state = {
     cassette: { name: '1K Cassette', base: 2585 },
-    addons: { programming: false, nfc: false, processor: false },
-    payment: 'ach'
+    addons: { programming: false, nfc: false, processor: false }
+  };
+
+  // Option keys the server prices from (lib/catalog.js). Display prices here
+  // must match that catalog.
+  const CASSETTE_KEYS = {
+    '1K Cassette': '1k', '2K Cassette': '2k',
+    'Dual 1K Cassettes': 'dual-1k', 'Dual 2K Cassettes': 'dual-2k'
   };
 
   const ADDON_PRICES = { programming: 200, nfc: 495, processor: 500 };
@@ -880,10 +871,6 @@
     // Add all selected add-ons
     for (const [k, on] of Object.entries(state.addons)) {
       if (on) subtotal += ADDON_PRICES[k];
-    }
-    // Card payment = total × 1.04 (4% applied to full order)
-    if (state.payment === 'card') {
-      subtotal = subtotal * 1.04;
     }
     return subtotal;
   }
@@ -900,7 +887,6 @@
     if (state.addons.programming) lines.push('+$200 programming');
     if (state.addons.nfc)         lines.push('+$495 NFC');
     if (state.addons.processor)   lines.push('+$500 outside processor');
-    if (state.payment === 'card') lines.push('+4% card fee');
     lines.push('Free shipping');
     document.getElementById('price-breakdown').innerHTML = lines.map((l,i) => i===0 ? `<span>${l}</span>` : l).join(' · ');
   }
@@ -919,23 +905,14 @@
     updatePriceDisplay();
   }
 
-  function selectPayment(type) {
-    state.payment = type;
-    document.getElementById('pay-ach').classList.toggle('selected', type === 'ach');
-    document.getElementById('pay-card').classList.toggle('selected', type === 'card');
-    updatePriceDisplay();
-  }
-
   function addToCart() {
-    const addonsSelected = Object.entries(state.addons)
-      .filter(([k, v]) => v)
-      .map(([k]) => ADDON_NAMES[k]);
+    const addonKeys = Object.keys(state.addons).filter((k) => state.addons[k]);
     window.ffiCart.add({
       machine: 'Hyosung Halo II',
       cassette: state.cassette.name,
-      addons: addonsSelected,
-      payment: state.payment === 'ach' ? 'ACH / Check' : 'Credit Card',
-      price: calcTotal()
+      addons: addonKeys.map((k) => ADDON_NAMES[k]),
+      price: calcTotal(),
+      config: { sku: 'halo-ii', cassette: CASSETTE_KEYS[state.cassette.name], addons: addonKeys }
     });
   }
 

@@ -204,7 +204,7 @@ document.getElementById('site-footer').innerHTML = `
 
 // ── SITEWIDE CART (buy-atm page only) ──
 if (window.location.pathname.includes('buy-atm') || window.location.pathname.includes('/atm/')) {
-// Inject cart button, drawer, and checkout modal into every page
+// Inject cart button and drawer into every page
 (function() {
   const cartHTML = `
     <button class="cart-btn" id="ffi-cart-btn" aria-label="View Cart">
@@ -225,64 +225,12 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
           <span class="cart-total__label">Order Total</span>
           <span class="cart-total__amount" id="cart-total-amt">$0</span>
         </div>
-        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. You will NOT be charged now — we will contact you within 24 hours to confirm your order and process payment.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. Pay securely by card or bank account (ACH) on the next page.</p>
+        <p id="cart-error" style="color:#e05252;font-size:13px;display:none;margin-bottom:12px;"></p>
         <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Proceed to Checkout</button>
       </div>
     </div>
-    <div class="checkout-overlay" id="checkout-overlay">
-      <div class="checkout-modal">
-        <button class="checkout-modal__close" id="checkout-close-btn">✕</button>
-        <div id="checkout-form-wrap">
-          <h2>Complete Your Order</h2>
-          <p class="sub">Fill out your info and we'll contact you within 24 hours to confirm your order, collect payment, and send paperwork.</p>
-          <div class="order-summary-box" id="checkout-summary"></div>
-          <div class="checkout-fields">
-            <div class="checkout-row">
-              <div class="form-group">
-                <label class="form-label">First Name *</label>
-                <input type="text" class="form-input" id="co-first" placeholder="John" />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Last Name *</label>
-                <input type="text" class="form-input" id="co-last" placeholder="Smith" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email Address *</label>
-              <input type="email" class="form-input" id="co-email" placeholder="john@yourbusiness.com" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number *</label>
-              <input type="tel" class="form-input" id="co-phone" placeholder="(555) 000-0000" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Business Name</label>
-              <input type="text" class="form-input" id="co-biz" placeholder="Your Business Name" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Shipping Address *</label>
-              <input type="text" class="form-input" id="co-address" placeholder="123 Main St, City, State, ZIP" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Notes / Questions</label>
-              <textarea class="form-textarea" id="co-notes" placeholder="Any questions or special requests..."></textarea>
-            </div>
-            <p id="co-error" style="color:#e05252;font-size:13px;display:none;"></p>
-            <button class="btn btn--primary" id="co-submit-btn" style="width:100%;justify-content:center;padding:18px;">
-              Submit Order Request →
-            </button>
-            <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;line-height:1.6;margin-top:8px;">No payment collected now. We'll reach out within 24 hours.</p>
-          </div>
-        </div>
-        <div class="success-state" id="success-state">
-          <div class="success-state__icon">✅</div>
-          <h2>Order Received!</h2>
-          <p>Thanks — we'll reach out to <strong id="success-email" style="color:var(--gold);"></strong> within 24 hours to confirm your order, collect payment, and send your processing paperwork.</p>
-          <br/>
-          <button class="btn btn--ghost" id="success-close-btn" style="margin:0 auto;">Close</button>
-        </div>
-      </div>
-    </div>`;
+`;
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = cartHTML;
@@ -290,8 +238,6 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
 
   // ── CART STATE (global so product pages can call window.ffiCart.add()) ──
   window.ffiCart = (function() {
-    const FORMSPREE = 'https://formspree.io/f/YOUR_FORM_ID';
-
     let cart = [];
 
     function fmt(n) {
@@ -323,8 +269,7 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
         html += '<div class="cart-item">' +
           '<div class="cart-item__name">' + item.machine + '</div>' +
           '<div class="cart-item__config">' + item.cassette +
-            (item.addons.length ? '<br>' + item.addons.join(', ') : '') +
-            '<br>Payment: ' + item.payment + '</div>' +
+            (item.addons.length ? '<br>' + item.addons.join(', ') : '') + '</div>' +
           '<div class="cart-item__price">' + fmt(item.price) + '</div>' +
           '<button class="cart-item__remove" onclick="ffiCart.remove(' + item.id + ')">Remove</button>' +
           '</div>';
@@ -343,86 +288,40 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
       document.getElementById('cart-overlay').classList.remove('open');
     }
 
-    function openCheckout() {
+    // Send the cart to Stripe Checkout. The server re-prices every item from
+    // its own catalog, so only SKUs and option keys are sent.
+    function checkout() {
       if (cart.length === 0) return;
-      let summaryHTML = '<div class="order-summary-box__title">Order Summary</div>';
-      let total = 0;
-      cart.forEach(function(item) {
-        total += item.price;
-        summaryHTML += '<div class="order-summary-box__item"><span>' + item.machine + ' — ' + item.cassette + '</span><span>' + fmt(item.price) + '</span></div>';
-        item.addons.forEach(function(a) {
-          summaryHTML += '<div class="order-summary-box__item" style="padding-left:12px;font-size:12px;color:rgba(255,255,255,0.4)"><span>+ ' + a + '</span></div>';
-        });
-      });
-      summaryHTML += '<div class="order-summary-box__total"><span>Total</span><span>' + fmt(total) + '</span></div>';
-      document.getElementById('checkout-summary').innerHTML = summaryHTML;
-      closeCart();
-      document.getElementById('checkout-overlay').classList.add('open');
-    }
-
-    function closeCheckout() {
-      document.getElementById('checkout-overlay').classList.remove('open');
-    }
-
-    function submitOrder() {
-      const first   = document.getElementById('co-first').value.trim();
-      const last    = document.getElementById('co-last').value.trim();
-      const email   = document.getElementById('co-email').value.trim();
-      const phone   = document.getElementById('co-phone').value.trim();
-      const address = document.getElementById('co-address').value.trim();
-      const biz     = document.getElementById('co-biz').value.trim();
-      const notes   = document.getElementById('co-notes').value.trim();
-      const err     = document.getElementById('co-error');
-
-      if (!first || !last || !email || !phone || !address) {
-        err.textContent = 'Please fill in all required fields.';
-        err.style.display = 'block';
-        return;
-      }
-      if (!/\S+@\S+\.\S+/.test(email)) {
-        err.textContent = 'Please enter a valid email address.';
-        err.style.display = 'block';
-        return;
-      }
+      const btn = document.getElementById('cart-checkout-btn');
+      const err = document.getElementById('cart-error');
+      btn.disabled = true;
+      btn.textContent = 'Redirecting to secure checkout...';
       err.style.display = 'none';
 
-      const total = cart.reduce(function(s, i) { return s + i.price; }, 0);
-      const orderDetails = cart.map(function(item) {
-        return item.machine + ' — ' + item.cassette +
-          (item.addons.length ? ' + ' + item.addons.join(', ') : '') +
-          ' (' + item.payment + '): ' + fmt(item.price);
-      }).join('\n');
-
-      fetch(FORMSPREE, {
+      fetch('/api/checkout', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: first + ' ' + last,
-          email: email, phone: phone,
-          business: biz || 'Not provided',
-          shipping_address: address,
-          order_details: orderDetails,
-          order_total: fmt(total),
-          notes: notes || 'None',
-          _subject: 'New ATM Order — ' + first + ' ' + last + ' — ' + fmt(total)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'atm', items: cart.map(function(i) { return i.config; }) })
+      })
+        .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
+        .then(function(r) {
+          if (!r.ok || !r.data.url) throw new Error(r.data.error || 'Checkout failed');
+          if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+          window.location.href = r.data.url;
         })
-      }).finally(function() {
-        document.getElementById('checkout-form-wrap').style.display = 'none';
-        document.getElementById('success-state').style.display = 'block';
-        document.getElementById('success-email').textContent = email;
-        cart = [];
-        render();
-      });
+        .catch(function(e) {
+          err.textContent = e.message || 'Something went wrong. Please call (205) 210-8121.';
+          err.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Proceed to Checkout';
+        });
     }
 
     // Wire up buttons
     document.getElementById('ffi-cart-btn').addEventListener('click', openCart);
     document.getElementById('cart-overlay').addEventListener('click', closeCart);
     document.getElementById('cart-close-btn').addEventListener('click', closeCart);
-    document.getElementById('cart-checkout-btn').addEventListener('click', openCheckout);
-    document.getElementById('checkout-close-btn').addEventListener('click', closeCheckout);
-    document.getElementById('co-submit-btn').addEventListener('click', submitOrder);
-    document.getElementById('success-close-btn').addEventListener('click', closeCheckout);
+    document.getElementById('cart-checkout-btn').addEventListener('click', checkout);
 
     return {
       add: function(item) {
@@ -436,7 +335,7 @@ if (window.location.pathname.includes('buy-atm') || window.location.pathname.inc
         render();
       },
       openCart: openCart,
-      openCheckout: openCheckout,
+      checkout: checkout,
       fmt: fmt
     };
   })();

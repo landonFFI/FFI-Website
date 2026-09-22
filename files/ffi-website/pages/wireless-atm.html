@@ -71,6 +71,84 @@
     </div>
   </div>
 </section>
+<section class="section section--gray" id="wireless-plans" hidden>
+  <div class="container">
+    <span class="label" style="color:var(--gold-dark);">Wireless Membership</span>
+    <h2 style="margin-bottom:8px;">Monthly Wireless Plans</h2>
+    <p style="margin-bottom:32px;">Billed monthly per ATM. Cancel anytime. Pay by card or bank account (ACH).</p>
+    <div class="grid--2" id="wireless-plan-list" style="gap:24px;"></div>
+    <p id="wireless-plan-error" style="color:#a33;font-size:14px;margin-top:16px;display:none;"></p>
+    <p id="wireless-portal" style="margin-top:24px;font-size:14px;display:none;">Already a member? <a href="#" id="wireless-portal-link" style="color:var(--gold-dark);font-weight:700;">Manage your membership →</a></p>
+  </div>
+</section>
+<script>
+  // Plans are read live from Stripe; this section stays hidden until at least
+  // one plan exists (see scripts/setup-catalog.mjs).
+  (function() {
+    var section = document.getElementById('wireless-plans');
+    var list = document.getElementById('wireless-plan-list');
+    var errorEl = document.getElementById('wireless-plan-error');
+
+    function el(tag, style, text) {
+      var node = document.createElement(tag);
+      if (style) node.style.cssText = style;
+      if (text) node.textContent = text;
+      return node;
+    }
+
+    function subscribe(tier, qty, btn) {
+      btn.disabled = true;
+      btn.textContent = 'Redirecting...';
+      errorEl.style.display = 'none';
+      fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'wireless', tier: tier, quantity: qty })
+      })
+        .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+        .then(function(r) {
+          if (!r.ok || !r.data.url) throw new Error(r.data.error || 'Checkout failed');
+          if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+          window.location.href = r.data.url;
+        })
+        .catch(function(e) {
+          errorEl.textContent = e.message + ' You can also call (205) 210-8121.';
+          errorEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+    }
+
+    fetch('/api/wireless-plans')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!data.plans || data.plans.length === 0) return;
+        data.plans.forEach(function(plan) {
+          var card = el('div', 'background:var(--white);padding:32px;border:1px solid rgba(0,0,0,0.08);');
+          card.appendChild(el('h3', 'margin-bottom:8px;', plan.name));
+          var price = '$' + (plan.amount / 100).toFixed(2) + ' / ' + plan.interval + ' per ATM';
+          card.appendChild(el('div', 'font-family:var(--font-display);font-weight:900;font-size:28px;color:var(--gold-dark);margin-bottom:12px;', price));
+          if (plan.description) card.appendChild(el('p', 'margin-bottom:20px;', plan.description));
+          var qtyLabel = el('label', 'display:block;font-size:13px;margin-bottom:16px;', 'Number of ATMs ');
+          var qty = el('input', 'width:72px;margin-left:8px;padding:6px;');
+          qty.type = 'number'; qty.min = '1'; qty.max = '50'; qty.value = '1';
+          qtyLabel.appendChild(qty);
+          card.appendChild(qtyLabel);
+          var btn = el('button', 'width:100%;justify-content:center;', 'Subscribe');
+          btn.className = 'btn btn--primary';
+          btn.addEventListener('click', function() { subscribe(plan.tier, qty.value, btn); });
+          card.appendChild(btn);
+          list.appendChild(card);
+        });
+        if (data.portalUrl) {
+          document.getElementById('wireless-portal-link').href = data.portalUrl;
+          document.getElementById('wireless-portal').style.display = 'block';
+        }
+        section.hidden = false;
+      })
+      .catch(function() { /* Leave the section hidden; the contact CTA still works. */ });
+  })();
+</script>
 <div id="site-footer"></div>
 <script src="../assets/js/layout.js"></script>
 <script src="../assets/js/main.js"></script>
