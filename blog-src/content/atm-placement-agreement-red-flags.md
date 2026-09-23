@@ -1,6 +1,7 @@
 ---
 slug: atm-placement-agreement-red-flags
 post_number: 4
+date_published: 2026-09-23
 wave: 3
 cluster: choosing-an-atm-company
 title_tag: "ATM Placement Agreements: What's Normal, What's a Red Flag"

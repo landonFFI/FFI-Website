@@ -1,6 +1,7 @@
 ---
 slug: how-much-is-an-atm-route-worth
 post_number: 27
+date_published: 2026-09-23
 wave: 1
 cluster: selling-an-atm
 title_tag: "How Much Is an ATM Route Worth? How Buyers Value It"

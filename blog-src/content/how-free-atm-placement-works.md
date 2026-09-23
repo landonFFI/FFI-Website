@@ -1,6 +1,7 @@
 ---
 slug: how-free-atm-placement-works
 post_number: 1
+date_published: 2026-09-23
 wave: 1
 cluster: getting-an-atm
 title_tag: "How Free ATM Placement Works (And Why It's Free)"

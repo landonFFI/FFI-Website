@@ -10,10 +10,33 @@ Usage:
     python3 tools/build.py --date 2026-09-24
     python3 tools/build.py --repo /path/to/FFI-Website   # also checks every internal link against the real repo
 
-Requires: pip install markdown pyyaml jinja2 textstat
+Requires: pip install markdown pyyaml jinja2 textstat==0.7.3 (textstat is optional; a built-in estimate is used if it fails)
 """
 import argparse, datetime, glob, html, json, math, os, re, sys
-import markdown, yaml, textstat
+import markdown, yaml
+
+try:
+    import textstat
+    textstat.flesch_kincaid_grade("Test sentence for the reading check.")
+    def fk_grade(text):
+        return textstat.flesch_kincaid_grade(text)
+except Exception:  # textstat missing or its word list can't download: use a built-in estimate
+    def _syllables(word):
+        word = word.lower().strip(".,;:!?\"'()")
+        if not word:
+            return 0
+        groups = re.findall(r"[aeiouy]+", word)
+        n = len(groups)
+        if word.endswith("e") and n > 1 and not word.endswith("le"):
+            n -= 1
+        return max(1, n)
+    def fk_grade(text):
+        sentences = max(1, len(re.findall(r"[.!?]+(?:\s|$)", text)))
+        words = re.findall(r"[A-Za-z][A-Za-z'-]*", text)
+        if not words:
+            return 0.0
+        syl = sum(_syllables(w) for w in words)
+        return 0.39 * (len(words) / sentences) + 11.8 * (syl / len(words)) - 15.59
 from jinja2 import Environment, FileSystemLoader
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,13 +77,11 @@ BANNED = [
 ALLOW = ["number one complaint", "personal guarantee", "is owning atms passive income?",
          "talking about \"passive income while you sleep.\"", "\"passive income. set it and forget it.\""]
 
-
 def slugify(value, separator="-"):
     value = re.sub(r"<[^>]+>", "", value)
     value = html.unescape(value).lower()
     value = re.sub(r"[^a-z0-9\s-]", "", value)
     return re.sub(r"[\s-]+", separator, value).strip(separator)
-
 
 def load_posts():
     posts = []
@@ -75,7 +96,6 @@ def load_posts():
         posts.append(meta)
     return posts
 
-
 def render_inline_cta(cta):
     return f"""<aside class="blog-inline-cta" aria-label="{html.escape(cta['headline'])}">
   <p class="blog-inline-cta__title">{html.escape(cta['headline'])}</p>
@@ -86,19 +106,24 @@ def render_inline_cta(cta):
   </div>
 </aside>"""
 
-
 def build_body(p):
     md = markdown.Markdown(extensions=["tables", "toc", "sane_lists"],
                            extension_configs={"toc": {"slugify": slugify, "toc_depth": "2"}})
     body = md.convert(p["body_md"])
     toc = [{"id": t["id"], "text": html.unescape(t["name"])} for t in md.toc_tokens]
     body = body.replace("<p>[[cta]]</p>", render_inline_cta(p["cta"]))
-    body = re.sub(r"<table>", '<div class="blog-table-wrap"><table>', body)
-    body = body.replace("</table>", "</table></div>")
+    def wrap_table(m):
+        tbl = m.group(0)
+        head = re.search(r"<thead>.*?</thead>", tbl, re.S)
+        cols = len(re.findall(r"<th[ >]", head.group(0))) if head else 0
+        if cols >= 4:
+            return ('<div class="blog-table-wrap blog-table-wrap--wide">' + tbl + '</div>\n'
+                    '<p class="blog-table-hint">Swipe the table sideways to see every column.</p>')
+        return '<div class="blog-table-wrap">' + tbl + '</div>'
+    body = re.sub(r"<table>.*?</table>", wrap_table, body, flags=re.S)
     body = re.sub(r'<a href="(https?://[^"]+)"', r'<a href="\1" target="_blank" rel="noopener"', body)
     indented = "\n".join(("        " + line) if line.strip() else "" for line in body.splitlines())
     return indented, toc, body
-
 
 def plain_text(p):
     txt = re.sub(r"\[\[cta\]\]", "", p["body_md"])
@@ -106,7 +131,6 @@ def plain_text(p):
     txt = re.sub(r"^\|.*\|$", "", txt, flags=re.M)      # drop tables for readability scoring
     txt = re.sub(r"[#*_>`]", "", txt)
     return txt
-
 
 def schema_for(p, date_pub, date_mod):
     article = {
@@ -159,11 +183,9 @@ def schema_for(p, date_pub, date_mod):
     dump = lambda o: "  " + json.dumps(o, indent=2, ensure_ascii=False).replace("\n", "\n  ")
     return dump(article), dump(crumbs), dump(faq)
 
-
 def human_date(iso):
     d = datetime.date.fromisoformat(iso)
     return d.strftime("%B ") + str(d.day) + d.strftime(", %Y")
-
 
 def check_post(p, body_html, all_slugs, repo_pages, problems):
     name = p["slug"]
@@ -204,10 +226,9 @@ def check_post(p, body_html, all_slugs, repo_pages, problems):
         if r not in all_slugs:
             problems.append(f"{name}: related post '{r}' is not in this build")
 
-
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--date", default="2026-09-24", help="Publish date for posts in this wave (YYYY-MM-DD)")
+    ap.add_argument("--date", default=datetime.date.today().isoformat(), help="Fallback publish date for posts with no date_published in front matter (YYYY-MM-DD)")
     ap.add_argument("--repo", default=None, help="Path to FFI-Website repo root for link checking")
     args = ap.parse_args()
 
@@ -228,13 +249,15 @@ def main():
 
     for p in posts:
         p["canonical"] = f"{SITE}/pages/blog/{p['slug']}.html"
-        p["cluster_name"] = CLUSTER_NAME[p["cluster"]]
+        p["cluster_name"] = CLUSTER_NAME.get(p["cluster"], "Blog")
         text = plain_text(p)
         p["word_count"] = len(text.split())
         p["read_minutes"] = max(3, math.ceil(p["word_count"] / 225))
         p["keywords_csv"] = ", ".join([p["primary_keyword"]] + p["secondary_keywords"])
-        p["date_published"] = p.get("date_published_override") or args.date
-        p["date_modified"] = p.get("date_modified_override") or args.date
+        # Per-post dates live in front matter so rebuilding never changes an old post's date.
+        dp = p.get("date_published") or p.get("date_published_override") or args.date
+        dm = p.get("date_modified") or p.get("date_modified_override") or dp
+        p["date_published"], p["date_modified"] = str(dp), str(dm)
         p["date_modified_human"] = human_date(p["date_modified"])
 
     for p in posts:
@@ -246,7 +269,11 @@ def main():
         out = post_tpl.render(p=p, web3forms_key=WEB3FORMS_KEY)
         with open(os.path.join(out_dir, f"{p['slug']}.html"), "w", encoding="utf-8") as fh:
             fh.write(out)
-        grade = textstat.flesch_kincaid_grade(plain_text(p))
+        grade = fk_grade(plain_text(p))
+        if grade > 8:
+            problems.append(f"{p['slug']}: reading grade {grade:.1f} is above 8 (target 4-7); use shorter sentences and simpler words")
+        if p.get("cluster") not in CLUSTER_NAME:
+            problems.append(f"{p['slug']}: cluster '{p.get('cluster')}' is not one of {list(CLUSTER_NAME)}")
         report.append((p.get("post_number"), p["slug"], p["word_count"], p["read_minutes"], round(grade, 1), len(p["faq"]), len(toc)))
 
     # Hub page
@@ -298,7 +325,5 @@ def main():
         sys.exit(1)
     print("\nAll checks passed.")
 
-
 if __name__ == "__main__":
     main()
-

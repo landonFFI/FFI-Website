@@ -1,6 +1,7 @@
 ---
 slug: event-atm-rental-cost
 post_number: 19
+date_published: 2026-09-23
 wave: 3
 cluster: atms-by-business-type
 title_tag: "Event ATM Rental Cost: What Sets the Price in Alabama"

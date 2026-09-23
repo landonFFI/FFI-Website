@@ -1,6 +1,7 @@
 ---
 slug: how-much-does-a-business-make-from-an-atm
 post_number: 2
+date_published: 2026-09-23
 wave: 1
 cluster: getting-an-atm
 title_tag: "How Much Can Your Business Make From a Free ATM?"

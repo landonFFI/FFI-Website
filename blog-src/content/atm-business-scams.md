@@ -1,6 +1,7 @@
 ---
 slug: atm-business-scams
 post_number: 42
+date_published: 2026-09-23
 wave: 2
 cluster: starting-an-atm-business
 title_tag: "ATM Business Scams: How to Spot One Before You Pay"

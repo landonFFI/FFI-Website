@@ -1,6 +1,7 @@
 ---
 slug: is-the-atm-business-worth-it
 post_number: 41
+date_published: 2026-09-23
 wave: 2
 cluster: starting-an-atm-business
 title_tag: "Is the ATM Business Still Worth It in 2026? Honest Answer"

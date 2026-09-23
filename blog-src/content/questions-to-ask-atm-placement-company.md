@@ -1,6 +1,7 @@
 ---
 slug: questions-to-ask-atm-placement-company
 post_number: 3
+date_published: 2026-09-23
 wave: 1
 cluster: choosing-an-atm-company
 title_tag: "12 Questions to Ask an ATM Placement Company First"

@@ -1,6 +1,7 @@
 ---
 slug: gas-station-atm
 post_number: 10
+date_published: 2026-09-23
 wave: 3
 cluster: atms-by-business-type
 title_tag: "Is an ATM Worth It for a Gas Station? Owner's Guide"
