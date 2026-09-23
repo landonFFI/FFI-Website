@@ -1,6 +1,7 @@
 ---
 slug: alabama-crypto-kiosk-law-store-owners
 post_number: 11
+date_published: 2026-09-23
 wave: 1
 cluster: industry-news
 title_tag: "Alabama's Crypto Kiosk Law: What Store Owners Should Know"

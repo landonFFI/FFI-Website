@@ -1,6 +1,7 @@
 ---
 slug: festival-event-atm-planning-alabama
 post_number: 18
+date_published: 2026-09-23
 wave: 3
 cluster: atms-by-business-type
 title_tag: "How Many ATMs Does My Event Need? Alabama Planning Guide"

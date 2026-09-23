@@ -1,6 +1,7 @@
 ---
 slug: does-my-bar-need-an-atm
 post_number: 9
+date_published: 2026-09-23
 wave: 1
 cluster: atms-by-business-type
 title_tag: "Does My Bar Need an ATM? Cash, Tips, and Card Fees"

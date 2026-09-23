@@ -1,6 +1,7 @@
 ---
 slug: how-much-does-an-atm-cost
 post_number: 32
+date_published: 2026-09-23
 wave: 1
 cluster: owning-an-atm
 title_tag: "How Much Does an ATM Cost in 2026? The Real Total"

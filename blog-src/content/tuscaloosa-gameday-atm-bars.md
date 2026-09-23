@@ -1,6 +1,7 @@
 ---
 slug: tuscaloosa-gameday-atm-bars
 post_number: 14
+date_published: 2026-09-23
 wave: 2
 cluster: atms-by-business-type
 title_tag: "Gameday ATM Planning for Tuscaloosa Bars on The Strip"

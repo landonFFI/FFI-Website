@@ -1,6 +1,7 @@
 ---
 slug: should-you-lease-an-atm
 post_number: 33
+date_published: 2026-09-23
 wave: 2
 cluster: owning-an-atm
 title_tag: "Should You Lease an ATM? What Leasing Companies Won't Say"

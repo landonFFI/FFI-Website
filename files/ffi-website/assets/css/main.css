@@ -2045,7 +2045,10 @@ body.cart-open { overflow: hidden; }
 
 /* ── Tables ── */
 .blog-table-wrap { overflow-x: auto; margin: 0 0 1.5em; border: 1px solid var(--color-border); -webkit-overflow-scrolling: touch; }
-.blog-table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.45; min-width: 520px; }
+.blog-table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.45; }
+.blog-table-wrap--wide table { min-width: 560px; }
+.blog-table-hint { display: none; font-size: 0.85rem; color: var(--text-muted); margin: -0.9em 0 1.5em; }
+@media (max-width: 640px) { .blog-table-hint { display: block; } }
 .blog-table-wrap th { background: var(--navy); color: var(--white); text-align: left; font-weight: 700; padding: 0.7rem 0.85rem; vertical-align: bottom; }
 .blog-table-wrap td { padding: 0.65rem 0.85rem; border-top: 1px solid var(--color-border); vertical-align: top; }
 .blog-table-wrap tbody tr:nth-child(even) td { background: var(--gray-100); }

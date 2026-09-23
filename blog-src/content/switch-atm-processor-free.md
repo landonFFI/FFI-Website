@@ -1,6 +1,7 @@
 ---
 slug: switch-atm-processor-free
 post_number: 23
+date_published: 2026-09-23
 wave: 3
 cluster: owning-an-atm
 title_tag: "How to Switch ATM Processors Without Buying a New ATM"

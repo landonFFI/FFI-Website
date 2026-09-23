@@ -1,6 +1,7 @@
 ---
 slug: do-you-have-to-buy-an-atm
 post_number: 31
+date_published: 2026-09-23
 wave: 1
 cluster: getting-an-atm
 title_tag: "Do You Have to Buy an ATM for Your Business? 4 Options"

@@ -1,6 +1,7 @@
 ---
 slug: atm-out-of-order-cost
 post_number: 6
+date_published: 2026-09-23
 wave: 1
 cluster: choosing-an-atm-company
 title_tag: "What an Out-of-Order ATM Really Costs Your Business"

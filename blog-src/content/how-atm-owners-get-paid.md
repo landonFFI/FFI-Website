@@ -1,6 +1,7 @@
 ---
 slug: how-atm-owners-get-paid
 post_number: 37
+date_published: 2026-09-23
 wave: 2
 cluster: owning-an-atm
 title_tag: "How Do ATM Owners Get Paid? Settlement Explained"

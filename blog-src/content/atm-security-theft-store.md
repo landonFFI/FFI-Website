@@ -1,6 +1,7 @@
 ---
 slug: atm-security-theft-store
 post_number: 8
+date_published: 2026-09-23
 wave: 3
 cluster: choosing-an-atm-company
 title_tag: "Will an ATM Make My Store a Target? ATM Security Guide"

@@ -1,6 +1,7 @@
 ---
 slug: att-copper-landline-shutdown-atm
 post_number: 21
+date_published: 2026-09-23
 wave: 1
 cluster: owning-an-atm
 title_tag: "AT&T Landline Shutdown: Is Your ATM on a Phone Line?"

@@ -1,6 +1,7 @@
 ---
 slug: buying-a-used-atm-online
 post_number: 35
+date_published: 2026-09-23
 wave: 2
 cluster: owning-an-atm
 title_tag: "Buying a Used ATM Online? 8 Things to Check First"
