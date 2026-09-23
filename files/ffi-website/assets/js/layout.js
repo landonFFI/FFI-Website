@@ -72,6 +72,10 @@ document.getElementById('site-nav').innerHTML = `
       <a href="tel:+12052108121" class="nav__phone">📞 (205) 210-8121</a>
       <a href="${root}index.html#contact" class="btn btn--primary nav__cta">Get Started</a>
     </div>
+  <a href="${root}pages/cart.html" class="nav__cart" id="nav-cart" aria-label="Cart, 0 items">
+    <svg class="nav__cart-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    <span class="nav__cart-count" id="nav-cart-count" hidden>0</span>
+  </a>
   <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -202,144 +206,10 @@ document.getElementById('site-footer').innerHTML = `
   </div>
 </footer>`;
 
-// ── SITEWIDE CART (buy-atm page only) ──
-if (window.location.pathname.includes('buy-atm') || window.location.pathname.includes('/atm/')) {
-// Inject cart button and drawer into every page
+// ── STORE (cart icon, drawer, configurator) ──
+// store.js runs on every page so the cart badge and drawer are always there.
 (function() {
-  const cartHTML = `
-    <button class="cart-btn" id="ffi-cart-btn" aria-label="View Cart">
-      🛒
-      <span class="cart-badge" id="cart-badge"></span>
-    </button>
-    <div class="cart-overlay" id="cart-overlay"></div>
-    <div class="cart-drawer" id="cart-drawer">
-      <div class="cart-drawer__head">
-        <span class="cart-drawer__title">Your Order</span>
-        <button class="cart-close" id="cart-close-btn">✕</button>
-      </div>
-      <div class="cart-drawer__body" id="cart-body">
-        <div class="cart-empty">No items yet</div>
-      </div>
-      <div class="cart-drawer__foot" id="cart-foot" style="display:none;">
-        <div class="cart-total">
-          <span class="cart-total__label">Order Total</span>
-          <span class="cart-total__amount" id="cart-total-amt">$0</span>
-        </div>
-        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:16px;line-height:1.5;">Free shipping nationwide. Tax calculated where required. Pay securely by card or bank account (ACH) on the next page.</p>
-        <p id="cart-error" style="color:#e05252;font-size:13px;display:none;margin-bottom:12px;"></p>
-        <button class="btn btn--primary" id="cart-checkout-btn" style="width:100%;justify-content:center;">Proceed to Checkout</button>
-      </div>
-    </div>
-`;
-
-  const wrapper = document.createElement('div');
-  wrapper.innerHTML = cartHTML;
-  document.body.appendChild(wrapper);
-
-  // ── CART STATE (global so product pages can call window.ffiCart.add()) ──
-  window.ffiCart = (function() {
-    let cart = [];
-
-    function fmt(n) {
-      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    function render() {
-      const body   = document.getElementById('cart-body');
-      const foot   = document.getElementById('cart-foot');
-      const badge  = document.getElementById('cart-badge');
-
-      if (!body) return;
-
-      if (cart.length === 0) {
-        body.innerHTML = '<div class="cart-empty">No items yet</div>';
-        foot.style.display = 'none';
-        badge.style.display = 'none';
-        return;
-      }
-
-      badge.style.display = 'flex';
-      badge.textContent = cart.length;
-      foot.style.display = 'block';
-
-      let html = '';
-      let total = 0;
-      cart.forEach(function(item) {
-        total += item.price;
-        html += '<div class="cart-item">' +
-          '<div class="cart-item__name">' + item.machine + '</div>' +
-          '<div class="cart-item__config">' + item.cassette +
-            (item.addons.length ? '<br>' + item.addons.join(', ') : '') + '</div>' +
-          '<div class="cart-item__price">' + fmt(item.price) + '</div>' +
-          '<button class="cart-item__remove" onclick="ffiCart.remove(' + item.id + ')">Remove</button>' +
-          '</div>';
-      });
-      body.innerHTML = html;
-      document.getElementById('cart-total-amt').textContent = fmt(total);
-    }
-
-    function openCart() {
-      document.getElementById('cart-drawer').classList.add('open');
-      document.getElementById('cart-overlay').classList.add('open');
-    }
-
-    function closeCart() {
-      document.getElementById('cart-drawer').classList.remove('open');
-      document.getElementById('cart-overlay').classList.remove('open');
-    }
-
-    // Send the cart to Stripe Checkout. The server re-prices every item from
-    // its own catalog, so only SKUs and option keys are sent.
-    function checkout() {
-      if (cart.length === 0) return;
-      const btn = document.getElementById('cart-checkout-btn');
-      const err = document.getElementById('cart-error');
-      btn.disabled = true;
-      btn.textContent = 'Redirecting to secure checkout...';
-      err.style.display = 'none';
-
-      fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'atm', items: cart.map(function(i) { return i.config; }) })
-      })
-        .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
-        .then(function(r) {
-          if (!r.ok || !r.data.url) throw new Error(r.data.error || 'Checkout failed');
-          if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
-          window.location.href = r.data.url;
-        })
-        .catch(function(e) {
-          err.textContent = e.message || 'Something went wrong. Please call (205) 210-8121.';
-          err.style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Proceed to Checkout';
-        });
-    }
-
-    // Wire up buttons
-    document.getElementById('ffi-cart-btn').addEventListener('click', openCart);
-    document.getElementById('cart-overlay').addEventListener('click', closeCart);
-    document.getElementById('cart-close-btn').addEventListener('click', closeCart);
-    document.getElementById('cart-checkout-btn').addEventListener('click', checkout);
-
-    return {
-      add: function(item) {
-        item.id = Date.now();
-        cart.push(item);
-        render();
-        openCart();
-      },
-      remove: function(id) {
-        cart = cart.filter(function(i) { return i.id !== id; });
-        render();
-      },
-      openCart: openCart,
-      checkout: checkout,
-      fmt: fmt
-    };
-  })();
-
+  var script = document.createElement('script');
+  script.src = root + 'assets/js/store.js';
+  document.body.appendChild(script);
 })();
-
-}

@@ -2,7 +2,8 @@
 document.querySelectorAll('.faq-item__q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.closest('.faq-item');
-    item.classList.toggle('open');
+    const open = item.classList.toggle('open');
+    if (q.hasAttribute('aria-expanded')) q.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 });
 

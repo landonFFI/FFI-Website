@@ -1,0 +1,853 @@
+{
+  "bulkThreshold": 10,
+  "maxQuantity": 99,
+  "models": {
+    "halo-ii": {
+      "brand": "Hyosung",
+      "model": "Halo II",
+      "page": "hyosung-halo-ii.html",
+      "image": "https://hyosungamericas.com/wp-content/uploads/2023/06/Hyosung-MX2600SEHALO-2_front-e1689144081681.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 258500
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 290000
+        },
+        {
+          "key": "dual-1k",
+          "label": "Dual 1K",
+          "amount": 300500
+        },
+        {
+          "key": "dual-2k",
+          "label": "Dual 2K",
+          "amount": 353000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 35000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "keypad",
+          "label": "Keypad",
+          "choices": [
+            {
+              "key": "standard",
+              "label": "Standard",
+              "amount": 0
+            },
+            {
+              "key": "rkt",
+              "label": "RKT",
+              "amount": 5000
+            }
+          ]
+        },
+        {
+          "key": "topper",
+          "label": "Topper",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Topper",
+              "amount": 0
+            },
+            {
+              "key": "standard",
+              "label": "Standard Topper",
+              "amount": 9000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 46000
+            }
+          ]
+        }
+      ]
+    },
+    "force": {
+      "brand": "Hyosung",
+      "model": "Force",
+      "page": "hyosung-force.html",
+      "image": "https://hyosungamericas.com/wp-content/uploads/2023/06/Front-rendering-of-Hyosung-MX2800SE_Force-ATM-e1689143468784.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 285000
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 316500
+        },
+        {
+          "key": "dual-1k",
+          "label": "Dual 1K",
+          "amount": 327000
+        },
+        {
+          "key": "dual-2k",
+          "label": "Dual 2K",
+          "amount": 379500
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "card-reader",
+          "label": "Card Reader",
+          "choices": [
+            {
+              "key": "emv",
+              "label": "EMV",
+              "amount": 0
+            },
+            {
+              "key": "anti-skim",
+              "label": "Anti-Skim Reader",
+              "amount": 71500
+            }
+          ]
+        },
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 35000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "topper",
+          "label": "Topper",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Topper",
+              "amount": 0
+            },
+            {
+              "key": "standard",
+              "label": "Standard Topper",
+              "amount": 9000
+            }
+          ]
+        },
+        {
+          "key": "keypad",
+          "label": "Keypad",
+          "choices": [
+            {
+              "key": "standard",
+              "label": "Standard",
+              "amount": 0
+            },
+            {
+              "key": "rkt",
+              "label": "RKT",
+              "amount": 5000
+            }
+          ]
+        },
+        {
+          "key": "camera",
+          "label": "Camera",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Camera",
+              "amount": 0
+            },
+            {
+              "key": "monivision",
+              "label": "MoniVision Camera",
+              "amount": 11000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 46000
+            }
+          ]
+        }
+      ]
+    },
+    "2800t": {
+      "brand": "Hyosung",
+      "model": "2800T",
+      "page": "hyosung-2800t.html",
+      "image": null,
+      "cassettes": [
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 455500
+        },
+        {
+          "key": "4k",
+          "label": "4K",
+          "amount": 518500
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 581500
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "card-reader",
+          "label": "Card Reader",
+          "choices": [
+            {
+              "key": "emv",
+              "label": "EMV",
+              "amount": 0
+            },
+            {
+              "key": "anti-skim",
+              "label": "Anti-Skim Reader",
+              "amount": 71500
+            }
+          ]
+        },
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 35000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "keypad",
+          "label": "Keypad",
+          "choices": [
+            {
+              "key": "standard",
+              "label": "Standard",
+              "amount": 0
+            },
+            {
+              "key": "rkt",
+              "label": "RKT",
+              "amount": 5000
+            }
+          ]
+        },
+        {
+          "key": "camera",
+          "label": "Camera",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Camera",
+              "amount": 0
+            },
+            {
+              "key": "monivision",
+              "label": "MoniVision Camera",
+              "amount": 11000
+            }
+          ]
+        }
+      ]
+    },
+    "g2500": {
+      "brand": "Genmega",
+      "model": "G2500",
+      "page": "genmega-g2500.html",
+      "image": "https://www.genmega.com/img/products/G2500/G2500_front.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 253500
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 280000
+        },
+        {
+          "key": "dual-1k",
+          "label": "Dual 1K",
+          "amount": 290500
+        },
+        {
+          "key": "dual-2k",
+          "label": "Dual 2K",
+          "amount": 348000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "topper",
+          "label": "Topper",
+          "choices": [
+            {
+              "key": "integrated",
+              "label": "Integrated",
+              "amount": 0
+            },
+            {
+              "key": "low",
+              "label": "Low Topper",
+              "amount": 6000
+            },
+            {
+              "key": "mini-high-bright",
+              "label": "Mini High-Bright Topper",
+              "amount": 11500
+            }
+          ]
+        },
+        {
+          "key": "lcd",
+          "label": "LCD",
+          "choices": [
+            {
+              "key": "8in",
+              "label": "8\" Wide Color",
+              "amount": 0
+            },
+            {
+              "key": "10in-touch",
+              "label": "10.2\" Color Touch",
+              "amount": 25500
+            }
+          ]
+        },
+        {
+          "key": "printer",
+          "label": "Printer",
+          "choices": [
+            {
+              "key": "2in",
+              "label": "2-inch",
+              "amount": 0
+            },
+            {
+              "key": "3in",
+              "label": "3-inch",
+              "amount": 15000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 45000
+            }
+          ]
+        }
+      ]
+    },
+    "onyx": {
+      "brand": "Genmega",
+      "model": "Onyx",
+      "page": "genmega-onyx.html",
+      "image": "https://www.genmega.com/img/products/Onyx/Onyx_front.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 269500
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 296000
+        },
+        {
+          "key": "dual-1k",
+          "label": "Dual 1K",
+          "amount": 306500
+        },
+        {
+          "key": "dual-2k",
+          "label": "Dual 2K",
+          "amount": 364000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "topper",
+          "label": "Topper",
+          "choices": [
+            {
+              "key": "integrated",
+              "label": "Integrated",
+              "amount": 0
+            },
+            {
+              "key": "low",
+              "label": "Low Topper",
+              "amount": 6000
+            },
+            {
+              "key": "mini-high-bright",
+              "label": "Mini High-Bright Topper",
+              "amount": 11500
+            }
+          ]
+        },
+        {
+          "key": "lcd",
+          "label": "LCD",
+          "choices": [
+            {
+              "key": "10in",
+              "label": "10.1\" Color",
+              "amount": 0
+            },
+            {
+              "key": "12in-touch",
+              "label": "12\" Color Touch",
+              "amount": 42000
+            }
+          ]
+        },
+        {
+          "key": "printer",
+          "label": "Printer",
+          "choices": [
+            {
+              "key": "2in",
+              "label": "2-inch",
+              "amount": 0
+            },
+            {
+              "key": "3in",
+              "label": "3-inch",
+              "amount": 15000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 40000
+            }
+          ]
+        }
+      ]
+    },
+    "onyx-w": {
+      "brand": "Genmega",
+      "model": "Onyx W",
+      "page": "genmega-onyx-w.html",
+      "image": "https://www.genmega.com/img/products/OnyxW/OnyxW-front.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 296500
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 333000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 40000
+            }
+          ]
+        }
+      ]
+    },
+    "nova": {
+      "brand": "Genmega",
+      "model": "Nova",
+      "page": "genmega-nova.html",
+      "image": "https://www.genmega.com/img/products/Nova/Nova-front.png",
+      "cassettes": [
+        {
+          "key": "1k",
+          "label": "1K",
+          "amount": 353500
+        },
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 380000
+        },
+        {
+          "key": "dual-1k",
+          "label": "Dual 1K",
+          "amount": 390500
+        },
+        {
+          "key": "dual-2k",
+          "label": "Dual 2K",
+          "amount": 448000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "topper",
+          "label": "Topper",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Topper",
+              "amount": 0
+            },
+            {
+              "key": "low",
+              "label": "Low Topper",
+              "amount": 6000
+            },
+            {
+              "key": "mini-high-bright",
+              "label": "Mini High-Bright Topper",
+              "amount": 11500
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 40000
+            }
+          ]
+        }
+      ]
+    },
+    "gt300": {
+      "brand": "Genmega",
+      "model": "GT300",
+      "page": "genmega-gt300.html",
+      "image": null,
+      "cassettes": [
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 463000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "rear-panel",
+          "label": "Rear Service Panel",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No Rear Service Panel",
+              "amount": 0
+            },
+            {
+              "key": "rear-panel",
+              "label": "Rear Service Panel",
+              "amount": 30000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 40000
+            }
+          ]
+        }
+      ]
+    },
+    "gt500": {
+      "brand": "Genmega",
+      "model": "GT500",
+      "page": "genmega-gt500.html",
+      "image": null,
+      "cassettes": [
+        {
+          "key": "2k",
+          "label": "2K",
+          "amount": 762000
+        },
+        {
+          "key": "4k",
+          "label": "4K",
+          "amount": 846000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 930000
+        }
+      ],
+      "optionGroups": [
+        {
+          "key": "lock",
+          "label": "Lock",
+          "choices": [
+            {
+              "key": "electronic",
+              "label": "Electronic",
+              "amount": 0
+            },
+            {
+              "key": "sg",
+              "label": "S&G",
+              "amount": 36000
+            },
+            {
+              "key": "cencon",
+              "label": "Cencon",
+              "amount": 65000
+            }
+          ]
+        },
+        {
+          "key": "nfc",
+          "label": "NFC Reader",
+          "note": "Add now: NFC is cheaper to factory-install than to add later.",
+          "choices": [
+            {
+              "key": "none",
+              "label": "No NFC Reader",
+              "amount": 0
+            },
+            {
+              "key": "nfc",
+              "label": "NFC Reader",
+              "amount": 40000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

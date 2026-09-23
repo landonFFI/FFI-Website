@@ -32,15 +32,19 @@ const fakeStripe = {
 };
 
 test('ATM line items are priced from the server catalog', () => {
-  const lines = atmLineItems({ sku: 'halo-ii', cassette: 'dual-2k', addons: ['nfc', 'nfc', 'programming'] });
-  assert.deepEqual(lines.map((l) => l.price_data.unit_amount), [353000, 49500, 20000]);
-  assert.equal(lines[0].price_data.product_data.name, 'Hyosung Halo II: Dual 2K Cassettes');
+  const lines = atmLineItems({ sku: 'halo-ii', cassette: 'dual-2k', options: { lock: 'cencon', nfc: 'nfc' }, quantity: 2 });
+  assert.deepEqual(lines.map((l) => l.price_data.unit_amount), [353000, 65000, 46000]);
+  assert.deepEqual(lines.map((l) => l.quantity), [2, 2, 2]);
+  assert.equal(lines[0].price_data.product_data.name, 'Hyosung Halo II: Dual 2K Cassette');
 });
 
-test('unknown SKUs and options are rejected', () => {
+test('unknown SKUs, options, and quantities are rejected', () => {
   assert.throws(() => atmLineItems({ sku: 'nope', cassette: '1k' }), CatalogError);
   assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '9k' }), CatalogError);
-  assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '1k', addons: ['free-atm'] }), CatalogError);
+  assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '1k', options: { lcd: '12in-touch' } }), CatalogError);
+  assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '1k', options: { nfc: 'free' } }), CatalogError);
+  assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '1k', quantity: 0 }), CatalogError);
+  assert.throws(() => atmLineItems({ sku: 'halo-ii', cassette: '1k', quantity: 1.5 }), CatalogError);
 });
 
 test('ATM checkout never sets payment_method_types, and tax follows the flag', async () => {

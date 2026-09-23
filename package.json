@@ -5,6 +5,7 @@
   "description": "Ford Frontier Investments website: static pages plus Vercel serverless functions for Stripe.",
   "engines": { "node": ">=20" },
   "scripts": {
+    "build": "node scripts/build-store.mjs",
     "stripe:setup-catalog": "node scripts/setup-catalog.mjs",
     "stripe:send-invoice": "node scripts/send-invoice.mjs",
     "test": "node --test tests/*.test.js"
