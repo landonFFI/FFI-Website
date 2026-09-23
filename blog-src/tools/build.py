@@ -77,11 +77,13 @@ BANNED = [
 ALLOW = ["number one complaint", "personal guarantee", "is owning atms passive income?",
          "talking about \"passive income while you sleep.\"", "\"passive income. set it and forget it.\""]
 
+
 def slugify(value, separator="-"):
     value = re.sub(r"<[^>]+>", "", value)
     value = html.unescape(value).lower()
     value = re.sub(r"[^a-z0-9\s-]", "", value)
     return re.sub(r"[\s-]+", separator, value).strip(separator)
+
 
 def load_posts():
     posts = []
@@ -96,6 +98,7 @@ def load_posts():
         posts.append(meta)
     return posts
 
+
 def render_inline_cta(cta):
     return f"""<aside class="blog-inline-cta" aria-label="{html.escape(cta['headline'])}">
   <p class="blog-inline-cta__title">{html.escape(cta['headline'])}</p>
@@ -105,6 +108,7 @@ def render_inline_cta(cta):
     <a class="blog-inline-cta__phone" href="tel:+12052108121">Or call or text (205) 210-8121</a>
   </div>
 </aside>"""
+
 
 def build_body(p):
     md = markdown.Markdown(extensions=["tables", "toc", "sane_lists"],
@@ -125,12 +129,14 @@ def build_body(p):
     indented = "\n".join(("        " + line) if line.strip() else "" for line in body.splitlines())
     return indented, toc, body
 
+
 def plain_text(p):
     txt = re.sub(r"\[\[cta\]\]", "", p["body_md"])
     txt = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", txt)
     txt = re.sub(r"^\|.*\|$", "", txt, flags=re.M)      # drop tables for readability scoring
     txt = re.sub(r"[#*_>`]", "", txt)
     return txt
+
 
 def schema_for(p, date_pub, date_mod):
     article = {
@@ -183,9 +189,11 @@ def schema_for(p, date_pub, date_mod):
     dump = lambda o: "  " + json.dumps(o, indent=2, ensure_ascii=False).replace("\n", "\n  ")
     return dump(article), dump(crumbs), dump(faq)
 
+
 def human_date(iso):
     d = datetime.date.fromisoformat(iso)
     return d.strftime("%B ") + str(d.day) + d.strftime(", %Y")
+
 
 def check_post(p, body_html, all_slugs, repo_pages, problems):
     name = p["slug"]
@@ -226,6 +234,7 @@ def check_post(p, body_html, all_slugs, repo_pages, problems):
         if r not in all_slugs:
             problems.append(f"{name}: related post '{r}' is not in this build")
 
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=datetime.date.today().isoformat(), help="Fallback publish date for posts with no date_published in front matter (YYYY-MM-DD)")
@@ -259,6 +268,23 @@ def main():
         dm = p.get("date_modified") or p.get("date_modified_override") or dp
         p["date_published"], p["date_modified"] = str(dp), str(dm)
         p["date_modified_human"] = human_date(p["date_modified"])
+
+    # Near-duplicate guard for new posts (post_number >= 100): compare against every other post and site page.
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import topic_check
+        tc_docs = topic_check.load_posts() + topic_check.load_pages(args.repo)
+        for p in posts:
+            if int(p.get("post_number") or 0) >= 100:
+                q = p.get("primary_keyword", "") + " " + p["h1"]
+                res, rej, warn = topic_check.check(q, " ".join(map(str, p.get("secondary_keywords", []))),
+                                                   [], tc_docs, exclude_id=p["slug"])
+                if rej:
+                    problems.append(f"{p['slug']}: too similar to {rej[0][4]['id']} (near-duplicate topic). Choose a new topic.")
+                elif warn:
+                    print(f"NOTE {p['slug']}: close to {', '.join(r[4]['id'] for r in warn[:3])}; the PR overlap audit must explain the difference.")
+    except ImportError:
+        problems.append("tools/topic_check.py is missing")
 
     for p in posts:
         body_indented, toc, body_html = build_body(p)
@@ -324,6 +350,7 @@ def main():
             print("  -", x)
         sys.exit(1)
     print("\nAll checks passed.")
+
 
 if __name__ == "__main__":
     main()
