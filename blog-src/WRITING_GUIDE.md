@@ -45,5 +45,7 @@ Answer ONE real question completely and honestly, earn trust, and send the reade
 - Never link to competing ATM companies.
 
 ## Duplicates and topics
-- Before writing, list existing slugs and titles in `content/`. Don't write a post that answers the same question as an existing post or site page (see `files/ffi-website/pages/`). Choose a different angle or a different topic.
-- Prefer questions a real business owner types into Google, especially long-tail and Alabama-specific ones.
+- Topic selection follows the topic gate in `AGENT_TASK.md`. A post must answer a question real people search for or ask, and one no existing post, pending post, or site page already answers.
+- Run `python3 tools/topic_check.py --index --repo ..` to see every question already covered, and `--question` to score a candidate.
+- A new angle only counts if it serves a different searcher need, not just different wording.
+- Prefer the long-tail, specific questions a business owner types when they're close to a decision, especially Alabama-specific ones.
