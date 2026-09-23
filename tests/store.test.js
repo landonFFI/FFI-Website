@@ -18,15 +18,15 @@ const SPEC_PRICES = {
 };
 
 const SPEC_OPTION_GROUPS = {
-  'halo-ii': ['lock', 'keypad', 'topper', 'nfc'],
-  force: ['card-reader', 'lock', 'topper', 'keypad', 'camera', 'nfc'],
-  '2800t': ['card-reader', 'lock', 'keypad', 'camera'],
-  g2500: ['lock', 'topper', 'lcd', 'printer', 'nfc'],
-  onyx: ['lock', 'topper', 'lcd', 'printer', 'nfc'],
-  'onyx-w': ['lock', 'nfc'],
-  nova: ['lock', 'topper', 'nfc'],
-  gt300: ['lock', 'rear-panel', 'nfc'],
-  gt500: ['lock', 'nfc'],
+  'halo-ii': ['lock', 'keypad', 'topper', 'nfc', 'programming', 'processing'],
+  force: ['card-reader', 'lock', 'topper', 'keypad', 'camera', 'nfc', 'programming', 'processing'],
+  '2800t': ['card-reader', 'lock', 'keypad', 'camera', 'programming', 'processing'],
+  g2500: ['lock', 'topper', 'lcd', 'printer', 'nfc', 'programming', 'processing'],
+  onyx: ['lock', 'topper', 'lcd', 'printer', 'nfc', 'programming', 'processing'],
+  'onyx-w': ['lock', 'nfc', 'programming', 'processing'],
+  nova: ['lock', 'topper', 'nfc', 'programming', 'processing'],
+  gt300: ['lock', 'rear-panel', 'nfc', 'programming', 'processing'],
+  gt500: ['lock', 'nfc', 'programming', 'processing'],
 };
 
 test('every cassette price matches the spec table', () => {
@@ -55,6 +55,14 @@ test('NFC is an add-on with factory-install copy wherever it is offered', () => 
     assert.equal(nfc.choices[0].key, 'none', sku);
     assert.ok(nfc.choices[1].amount > 0, sku);
     assert.match(nfc.note, /factory-install/, sku);
+  }
+});
+
+test('programming and processing setup carry the confirmed FFI prices on every model', () => {
+  for (const [sku, product] of Object.entries(ATM_CATALOG)) {
+    const byKey = Object.fromEntries(product.optionGroups.map((g) => [g.key, Object.fromEntries(g.choices.map((c) => [c.key, c.amount / 100]))]));
+    assert.deepEqual(byKey.programming, { self: 0, factory: 150, onsite: 250 }, sku);
+    assert.deepEqual(byKey.processing, { ffi: 0, outside: 500 }, sku);
   }
 });
 

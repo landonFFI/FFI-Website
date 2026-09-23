@@ -217,7 +217,7 @@
       '</dl>' +
       bulk +
       '<div class="store-summary__total"><span>Total</span><span>' + money(subtotal) + '</span></div>' +
-      '<p class="store-summary__note">Ships in about 2 weeks. Sales tax, if any, is calculated at checkout.</p>' +
+      '<p class="store-summary__note">Free shipping within the continental US; ships in about 2 weeks. Sales tax, if any, is calculated at checkout.</p>' +
       '<button type="button" class="btn btn--primary btn--lg store-summary__checkout" data-action="checkout">Checkout</button>' +
       '<p class="store-summary__error" data-checkout-error role="alert"></p>' +
       (withFullCartLink ? '<a class="store-summary__full" href="' + base + 'pages/cart.html">View Full Cart</a>' : '');

@@ -61,6 +61,14 @@ test('ATM checkout never sets payment_method_types, and tax follows the flag', a
   delete process.env.STRIPE_TAX_ENABLED;
 });
 
+test('ATM checkout allows more than 10 cart lines, up to Stripe\'s 100 line items', async () => {
+  const line = { sku: 'halo-ii', cassette: '1k' };
+  const twelve = await buildSessionParams({ type: 'atm', items: Array(12).fill(line) }, fakeStripe);
+  assert.equal(twelve.line_items.length, 12);
+  const heavy = { sku: 'force', cassette: '1k', options: { 'card-reader': 'anti-skim', lock: 'sg', topper: 'standard', keypad: 'rkt', camera: 'monivision', nfc: 'nfc', programming: 'factory', processing: 'outside' } };
+  await assert.rejects(buildSessionParams({ type: 'atm', items: Array(12).fill(heavy) }, fakeStripe), /call \(205\) 210-8121/);
+});
+
 test('wireless checkout resolves the price by lookup key', async () => {
   const params = await buildSessionParams({ type: 'wireless', tier: 'standard', quantity: '3' }, fakeStripe);
   assert.equal(params.mode, 'subscription');

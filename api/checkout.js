@@ -1,11 +1,14 @@
 import { getStripe, taxEnabled, siteUrl } from '../lib/stripe.js';
 import { atmLineItems, WIRELESS_TIERS, CatalogError } from '../lib/catalog.js';
 
-const MAX_CART_ITEMS = 10;
+// Stripe allows up to 100 line items per Checkout Session in payment mode.
+// Each cart line becomes one line for the machine plus one per paid option.
+const MAX_STRIPE_LINE_ITEMS = 100;
 const MAX_ATMS_PER_SUBSCRIPTION = 50;
+const TOO_LARGE = 'This order has too many different configurations to check out online. Please call (205) 210-8121 and we\'ll place it for you.';
 
 // POST /api/checkout
-//   { "type": "atm", "items": [{ "sku": "halo-ii", "cassette": "1k", "addons": ["nfc"] }] }
+//   { "type": "atm", "items": [{ "sku": "halo-ii", "cassette": "1k", "options": { "nfc": "nfc" }, "quantity": 1 }] }
 //   { "type": "wireless", "tier": "standard", "quantity": 2 }
 // Responds with { url } for a Stripe-hosted Checkout page.
 export default async function handler(req, res) {
@@ -38,14 +41,16 @@ export async function buildSessionParams(body, stripe) {
   if (body.type === 'atm') {
     const items = Array.isArray(body.items) ? body.items : [];
     if (items.length === 0) throw new CatalogError('Your cart is empty.');
-    if (items.length > MAX_CART_ITEMS) throw new CatalogError('Too many items in cart.');
+    if (items.length > MAX_STRIPE_LINE_ITEMS) throw new CatalogError(TOO_LARGE);
+    const lineItems = items.flatMap(atmLineItems);
+    if (lineItems.length > MAX_STRIPE_LINE_ITEMS) throw new CatalogError(TOO_LARGE);
 
     return {
       ...common,
       mode: 'payment',
       integration_identifier: 'ffi_atm_order_rqbvlmex',
       cancel_url: `${base}/pages/buy-atm.html`,
-      line_items: items.flatMap(atmLineItems),
+      line_items: lineItems,
       customer_creation: 'always',
       shipping_address_collection: { allowed_countries: ['US'] },
       phone_number_collection: { enabled: true },
