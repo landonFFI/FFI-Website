@@ -33,7 +33,7 @@ const fakeStripe = {
 
 test('ATM line items are priced from the server catalog', () => {
   const lines = atmLineItems({ sku: 'halo-ii', cassette: 'dual-2k', options: { lock: 'cencon', nfc: 'nfc' }, quantity: 2 });
-  assert.deepEqual(lines.map((l) => l.price_data.unit_amount), [353000, 65000, 46000]);
+  assert.deepEqual(lines.map((l) => l.price_data.unit_amount), [342500, 65000, 47500]);
   assert.deepEqual(lines.map((l) => l.quantity), [2, 2, 2]);
   assert.equal(lines[0].price_data.product_data.name, 'Hyosung Halo II: Dual 2K Cassette');
 });
@@ -59,6 +59,14 @@ test('ATM checkout never sets payment_method_types, and tax follows the flag', a
   const taxed = await buildSessionParams({ type: 'atm', items: [{ sku: 'halo-ii', cassette: '1k' }] }, fakeStripe);
   assert.deepEqual(taxed.automatic_tax, { enabled: true });
   delete process.env.STRIPE_TAX_ENABLED;
+});
+
+test('ATM checkout allows more than 10 cart lines, up to Stripe\'s 100 line items', async () => {
+  const line = { sku: 'halo-ii', cassette: '1k' };
+  const twelve = await buildSessionParams({ type: 'atm', items: Array(12).fill(line) }, fakeStripe);
+  assert.equal(twelve.line_items.length, 12);
+  const heavy = { sku: 'force', cassette: '1k', options: { 'card-reader': 'anti-skim', lock: 'sg', topper: 'standard', keypad: 'rkt', camera: 'monivision', nfc: 'nfc', programming: 'factory', processing: 'outside' } };
+  await assert.rejects(buildSessionParams({ type: 'atm', items: Array(12).fill(heavy) }, fakeStripe), /call \(205\) 210-8121/);
 });
 
 test('wireless checkout resolves the price by lookup key', async () => {

@@ -11,7 +11,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ATM_CATALOG, BULK_PRICING_THRESHOLD, fromPrice, productName, publicCatalog } from '../lib/catalog.js';
-import { PRODUCT_CONTENT, SHARED_PRODUCT_FAQ, TRUST_STRIP } from '../lib/store-content.js';
+import { PRODUCT_CONTENT, SHARED_PRODUCT_FAQ, TRUST_NOTE, TRUST_STRIP } from '../lib/store-content.js';
 import { PILLAR_PAGES } from '../lib/pillar-content.js';
 
 const SITE = 'https://fordfrontierinvestments.com';
@@ -132,7 +132,8 @@ function hero({ depth, crumbs, eyebrow, h1, sub }) {
 function trustStrip() {
   return `<ul class="trust-strip">
 ${TRUST_STRIP.map((t) => `  <li class="trust-strip__item"><span class="trust-strip__icon" aria-hidden="true">${t.icon}</span>${esc(t.label)}</li>`).join('\n')}
-</ul>`;
+</ul>
+<p class="trust-note">${esc(TRUST_NOTE)}</p>`;
 }
 
 function photo(sku, { loading = 'eager' } = {}) {
@@ -204,7 +205,7 @@ ${groups}
       <div class="buy-box__price">
         <span class="buy-box__price-label">Your price</span>
         <output class="buy-box__price-value" data-config-price aria-live="polite">${money(cheapest.amount)}</output>
-        <p class="buy-box__price-meta">Free nationwide shipping · Ships in about 2 weeks</p>
+        <p class="buy-box__price-meta">Free shipping in the continental US · Ships in about 2 weeks</p>
       </div>
       <button type="submit" class="btn btn--primary btn--lg buy-box__add">Add to Cart</button>
       <p class="buy-box__status" data-config-status role="status"></p>
@@ -400,7 +401,7 @@ function hubCard(sku) {
         <div class="atm-card__img">${photo(sku, { loading: 'lazy' })}</div>
         <ul class="atm-card__specs">
 ${c.features.slice(0, 4).map((f) => `          <li>${esc(f)}</li>`).join('\n')}
-          <li>Free nationwide shipping</li>
+          <li>Free shipping in the continental US</li>
         </ul>
         <p class="atm-card__price"><span>Starting at</span> ${money(fromPrice(sku))}</p>
         <div class="atm-card__buttons">

@@ -11,22 +11,22 @@
         {
           "key": "1k",
           "label": "1K",
-          "amount": 258500
+          "amount": 248000
         },
         {
           "key": "2k",
           "label": "2K",
-          "amount": 290000
+          "amount": 279500
         },
         {
           "key": "dual-1k",
           "label": "Dual 1K",
-          "amount": 300500
+          "amount": 290000
         },
         {
           "key": "dual-2k",
           "label": "Dual 2K",
-          "amount": 353000
+          "amount": 342500
         }
       ],
       "optionGroups": [
@@ -96,7 +96,48 @@
             {
               "key": "nfc",
               "label": "NFC Reader",
-              "amount": 46000
+              "amount": 47500
+            }
+          ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
             }
           ]
         }
@@ -111,22 +152,27 @@
         {
           "key": "1k",
           "label": "1K",
-          "amount": 285000
+          "amount": 269500
         },
         {
           "key": "2k",
           "label": "2K",
-          "amount": 316500
+          "amount": 296000
         },
         {
           "key": "dual-1k",
           "label": "Dual 1K",
-          "amount": 327000
+          "amount": 306500
         },
         {
           "key": "dual-2k",
           "label": "Dual 2K",
-          "amount": 379500
+          "amount": 364000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 422000
         }
       ],
       "optionGroups": [
@@ -228,7 +274,48 @@
             {
               "key": "nfc",
               "label": "NFC Reader",
-              "amount": 46000
+              "amount": 47500
+            }
+          ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
             }
           ]
         }
@@ -238,7 +325,7 @@
       "brand": "Hyosung",
       "model": "2800T",
       "page": "hyosung-2800t.html",
-      "image": null,
+      "image": "https://hyosungamericas.com/wp-content/uploads/2023/06/Hyosung-MX2800T_front-e1689143782889.png",
       "cassettes": [
         {
           "key": "2k",
@@ -325,6 +412,47 @@
               "amount": 11000
             }
           ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
+            }
+          ]
         }
       ]
     },
@@ -353,6 +481,16 @@
           "key": "dual-2k",
           "label": "Dual 2K",
           "amount": 348000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 416000
+        },
+        {
+          "key": "8k",
+          "label": "8K",
+          "amount": 484000
         }
       ],
       "optionGroups": [
@@ -393,7 +531,7 @@
             },
             {
               "key": "mini-high-bright",
-              "label": "Mini High-Bright Topper",
+              "label": "Mini High-Bright",
               "amount": 11500
             }
           ]
@@ -446,6 +584,47 @@
               "amount": 45000
             }
           ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
+            }
+          ]
         }
       ]
     },
@@ -474,6 +653,16 @@
           "key": "dual-2k",
           "label": "Dual 2K",
           "amount": 364000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 432000
+        },
+        {
+          "key": "8k",
+          "label": "8K",
+          "amount": 500000
         }
       ],
       "optionGroups": [
@@ -514,7 +703,7 @@
             },
             {
               "key": "mini-high-bright",
-              "label": "Mini High-Bright Topper",
+              "label": "Mini High-Bright",
               "amount": 11500
             }
           ]
@@ -565,6 +754,47 @@
               "key": "nfc",
               "label": "NFC Reader",
               "amount": 40000
+            }
+          ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
             }
           ]
         }
@@ -623,6 +853,47 @@
               "key": "nfc",
               "label": "NFC Reader",
               "amount": 40000
+            }
+          ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
             }
           ]
         }
@@ -693,7 +964,7 @@
             },
             {
               "key": "mini-high-bright",
-              "label": "Mini High-Bright Topper",
+              "label": "Mini High-Bright",
               "amount": 11500
             }
           ]
@@ -714,6 +985,47 @@
               "amount": 40000
             }
           ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
+            }
+          ]
         }
       ]
     },
@@ -721,7 +1033,7 @@
       "brand": "Genmega",
       "model": "GT300",
       "page": "genmega-gt300.html",
-      "image": null,
+      "image": "https://www.genmega.com/img/products/GT3000/GT3000_front.png",
       "cassettes": [
         {
           "key": "2k",
@@ -757,12 +1069,12 @@
           "choices": [
             {
               "key": "none",
-              "label": "No Rear Service Panel",
+              "label": "None",
               "amount": 0
             },
             {
               "key": "rear-panel",
-              "label": "Rear Service Panel",
+              "label": "Rear Panel",
               "amount": 30000
             }
           ]
@@ -783,6 +1095,47 @@
               "amount": 40000
             }
           ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
+            }
+          ]
         }
       ]
     },
@@ -790,7 +1143,7 @@
       "brand": "Genmega",
       "model": "GT500",
       "page": "genmega-gt500.html",
-      "image": null,
+      "image": "https://www.genmega.com/img/products/GT5000/GT5000_front.png",
       "cassettes": [
         {
           "key": "2k",
@@ -844,6 +1197,47 @@
               "key": "nfc",
               "label": "NFC Reader",
               "amount": 40000
+            }
+          ]
+        },
+        {
+          "key": "programming",
+          "label": "Programming",
+          "taxCode": "txcd_20030000",
+          "note": "Self-programming comes with our free programming sheet and phone help from Ford Frontier Investments during business hours.",
+          "choices": [
+            {
+              "key": "self",
+              "label": "Self-Program",
+              "amount": 0
+            },
+            {
+              "key": "factory",
+              "label": "Factory Programmed",
+              "amount": 15000
+            },
+            {
+              "key": "onsite",
+              "label": "On-Site Technician",
+              "amount": 25000
+            }
+          ]
+        },
+        {
+          "key": "processing",
+          "label": "Processing Setup",
+          "taxCode": "txcd_20030000",
+          "note": "Processing setup is free when you process with Ford Frontier Investments. Using a different processor adds a $500 setup fee.",
+          "choices": [
+            {
+              "key": "ffi",
+              "label": "FFI Processing",
+              "amount": 0
+            },
+            {
+              "key": "outside",
+              "label": "Outside Processor",
+              "amount": 50000
             }
           ]
         }

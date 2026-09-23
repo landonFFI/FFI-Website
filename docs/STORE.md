@@ -27,7 +27,8 @@ The cart stores only the model, cassette, options, and quantity. It shows prices
 
 ## Before launch
 
-- **Add-on prices** in `lib/catalog.js` are placeholders borrowed from NextATM, not FFI distributor pricing.
+- **Hardware add-on prices** (lock, keypad, topper, LCD, printer, camera, NFC, card reader, rear panel) in `lib/catalog.js` are placeholders borrowed from NextATM, not SWYPCO distributor pricing. Don't enable live Stripe keys until they're replaced.
+- **Programming and processing setup** prices are confirmed FFI pricing and apply to every model: self-program free, factory programmed +$150, on-site technician +$250; FFI processing free, outside processor +$500.
 - **GT300/GT500** option sets come from NextATM's GT3000/GT5000. Confirm the models match.
-- **Photos:** the 2800T, GT300 and GT500 show a "Photo coming soon" placeholder. To add a photo, set `image` in `lib/catalog.js` and run `npm run build`.
-- **The ROI page** (`pages/atm-machine-roi.html`) is marked `noindex`, left out of the sitemap, and not linked from other pages until its earnings language is reviewed. To publish it, remove `noindex: true` in `lib/pillar-content.js`, add it to the sitemap, and link it from related pages.
+- **Photos** are hotlinked from hyosungamericas.com and genmega.com. If one stops loading, the page shows a labeled placeholder rather than a broken image. Alternate angles are listed in CART-SPEC.md if a gallery is added later.
+- **Earnings language:** the ROI guide and the break-even answer removed from `faq.html` are both waiting on review. See `docs/EARNINGS-REVIEW.md`.

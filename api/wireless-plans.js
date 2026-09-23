@@ -30,7 +30,9 @@ export default async function handler(req, res) {
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
     return res.status(200).json({ plans, portalUrl: process.env.STRIPE_PORTAL_LOGIN_URL || null });
   } catch (err) {
+    // The page hides the plans section when the list is empty, so answer 200
+    // rather than putting an error in every visitor's console.
     console.error('Wireless plans error:', err);
-    return res.status(500).json({ plans: [], portalUrl: null });
+    return res.status(200).json({ plans: [], portalUrl: null });
   }
 }

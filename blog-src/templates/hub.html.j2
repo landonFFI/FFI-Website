@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATM Questions Answered for Alabama Businesses | FFI Blog</title>
+  <meta name="description" content="Straight answers about ATMs for Alabama business owners: free placement, buying an ATM, costs, earnings, contracts, and selling a route. From Ford Frontier Investments." />
+  <meta name="keywords" content="ATM blog Alabama, ATM placement questions, how much does an ATM cost, free ATM placement Alabama, sell ATM route Alabama, ATM for my business" />
+  <meta name="author" content="Landon Ford, Ford Frontier Investments" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fordfrontierinvestments.com/pages/blog.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ford Frontier Investments" />
+  <meta property="og:url" content="https://fordfrontierinvestments.com/pages/blog.html" />
+  <meta property="og:title" content="ATM Questions Answered for Alabama Businesses" />
+  <meta property="og:description" content="Straight answers about getting, buying, running, and selling ATMs in Alabama." />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+{{ schema_blog }}
+  </script>
+  <script type="application/ld+json">
+{{ schema_breadcrumb }}
+  </script>
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/mobile-fix.css" />
+</head>
+<body>
+<div id="site-nav"></div>
+
+<header class="blog-hero">
+  <div class="container"><div class="blog-hero__inner">
+    <nav class="blog-hero__crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> / Blog</nav>
+    <h1>ATM Questions, Answered Straight</h1>
+    <p class="blog-hero__dek">Plain answers for Alabama business owners about getting an ATM, buying one, running one, and selling one. Written by Landon Ford, owner of Ford Frontier Investments in Birmingham.</p>
+  </div></div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <p class="blog-hub-intro">Most ATM advice online is written to sell you a machine. Ours is written to help you make the right call for your business, even when that means a free placement instead of a sale, or a sale instead of a free placement. If you don't see your question here, call or text <a href="tel:+12052108121">(205) 210-8121</a>.</p>
+
+    <h2 class="heading heading--lg" style="margin-top:var(--space-2xl);">Start here</h2>
+    <div class="blog-hub-start">
+{% for p in start_here %}      <div class="blog-hub-start__item">
+        <a href="blog/{{ p.slug }}.html">{{ p.h1 }}</a>
+        <p>{{ p.meta_description }}</p>
+      </div>
+{% endfor %}    </div>
+
+{% for g in groups %}    <div class="blog-hub-group" id="{{ g.key }}">
+      <h2>{{ g.name }}</h2>
+      <p class="blog-hub-group__desc">{{ g.desc }}</p>
+      <ul class="blog-hub-list">
+{% for p in g.posts %}        <li>
+          <a href="blog/{{ p.slug }}.html">{{ p.h1 }}</a>
+          <p>{{ p.meta_description }}</p>
+          <small>About a {{ p.read_minutes }}-minute read</small>
+        </li>
+{% endfor %}      </ul>
+    </div>
+{% endfor %}  </div>
+</section>
+
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="two-col reveal">
+      <div>
+        <span class="label" style="color:var(--gold);">Talk to Landon</span>
+        <h2 style="font-family:var(--font-display);font-weight:900;font-size:clamp(24px,4vw,38px);color:var(--white);margin:12px 0 20px;">Have a Question We Didn't Answer?</h2>
+        <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:24px;">Ask it directly. You'll get a straight answer from the owner, not a call center.</p>
+        <div style="padding:24px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--white);margin-bottom:6px;">Call or text Landon directly</div>
+          <a href="tel:+12052108121" style="font-family:var(--font-display);font-size:24px;font-weight:900;color:var(--gold);letter-spacing:0.02em;">(205) 210-8121</a>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;">Or email: <a href="mailto:Landon@FordFrontierInvestments.com" style="color:rgba(255,255,255,0.6);">Landon@FordFrontierInvestments.com</a></div>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" style="display:flex;flex-direction:column;gap:16px;">
+          <input type="hidden" name="access_key" value="{{ web3forms_key }}" />
+          <input type="hidden" name="subject" value="Blog Lead: Blog Home Page Question" />
+          <input type="hidden" name="from_name" value="Ford Frontier Investments Website" />
+          <input type="hidden" name="source_page" value="https://fordfrontierinvestments.com/pages/blog.html" />
+          <input type="hidden" name="redirect" value="false" />
+          <div class="form-group">
+            <label class="form-label" for="f-name">First name</label>
+            <input type="text" class="form-input" id="f-name" name="first_name" required autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-business">Business name</label>
+            <input type="text" class="form-input" id="f-business" name="business" required autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-phone">Phone number</label>
+            <input type="tel" class="form-input" id="f-phone" name="phone" required autocomplete="tel" placeholder="(205) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-question">Your question</label>
+            <textarea class="form-input" id="f-question" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;padding:18px;font-size:16px;">Send My Question</button>
+          <p style="font-size:12px;color:rgba(255,255,255,0.45);text-align:center;line-height:1.6;">We'll get back to you fast. No spam. No pressure.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
+
