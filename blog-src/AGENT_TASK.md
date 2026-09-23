@@ -110,4 +110,4 @@ The build also runs a near-duplicate check on new posts. It must end with "All c
   9. **Build report:** this post's line plus "All checks passed."
 - If you can't open the PR, push the branch anyway and say so in your final message.
 
-Never merge. Never edit site files outside `files/ffi-website/pages/blog/`, `files/ffi-website/pages/blog.html`, and `files/ffi-website/sitemap.xml`.
+Never merge. Never edit site files outside `files/ffi-website/pages/blog/` and `files/ffi-website/pages/blog.html`. Never edit the sitemap files; they rebuild automatically after merge.

@@ -1,0 +1,64 @@
+name: Update sitemap
+
+# Rebuilds the sitemap whenever the website changes on main, commits it,
+# then notifies IndexNow engines (Bing and others) about the changed pages.
+# Free: GitHub Actions minutes on this repo. No API keys or paid services.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "files/ffi-website/**"
+      - "!files/ffi-website/sitemap*.xml"
+      - "!files/ffi-website/robots.txt"
+      - "scripts/build-sitemap.mjs"
+  schedule:
+    - cron: "17 10 * * 1"   # weekly safety run, Mondays ~5 a.m. Central
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history = accurate <lastmod> dates
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build sitemap and crawl report
+        run: node scripts/build-sitemap.mjs
+
+      - name: Commit sitemap if it changed
+        id: commit
+        run: |
+          git config user.name "${{ vars.SITEMAP_COMMIT_NAME || 'github-actions[bot]' }}"
+          git config user.email "${{ vars.SITEMAP_COMMIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}"
+          git add files/ffi-website/sitemap*.xml files/ffi-website/robots.txt docs/SITEMAP-REPORT.md
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Update sitemap"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wait for Vercel to deploy
+        if: github.event_name == 'push'
+        run: sleep 180
+
+      - name: Notify IndexNow (Bing and others)
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: node scripts/indexnow.mjs || true
