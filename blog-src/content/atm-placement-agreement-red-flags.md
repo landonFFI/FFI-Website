@@ -31,7 +31,7 @@ cta:
 related:
   - questions-to-ask-atm-placement-company
   - how-free-atm-placement-works
-  - atm-out-of-order-cost
+  - is-your-atm-company-local
 faq:
   - q: "What should an ATM placement agreement include?"
     a: "Who owns the machine and the cash, who loads and repairs it, how your share is figured, how and when you're paid, how long the agreement runs, how it renews and ends, what happens if the company sells its route, and who covers theft or damage."

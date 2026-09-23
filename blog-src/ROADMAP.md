@@ -2,7 +2,7 @@
 
 The weekly writer takes the first unchecked item when no topic is requested. Check the box and add the slug when a post is published.
 
-- [ ] How to tell if an ATM company is actually local (cluster: choosing-an-atm-company)
+- [x] How to tell if an ATM company is actually local (cluster: choosing-an-atm-company) → is-your-atm-company-local
 - [ ] Why laundromats and barbershops make great ATM spots (atms-by-business-type)
 - [ ] ATMs for gentlemen's clubs: uptime, capacity, and discretion (atms-by-business-type)
 - [ ] Need cash on The Strip? A gameday guide for students and visitors (atms-by-business-type)

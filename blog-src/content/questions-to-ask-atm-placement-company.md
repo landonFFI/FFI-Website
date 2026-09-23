@@ -31,7 +31,7 @@ cta:
 related:
   - how-free-atm-placement-works
   - atm-out-of-order-cost
-  - how-much-does-a-business-make-from-an-atm
+  - is-your-atm-company-local
 faq:
   - q: "What should I ask an ATM placement company before signing?"
     a: "Ask who owns the machine and cash, who loads it, how they know it's running low, how and when you get paid, who answers when it breaks, how reliable the connection is, how the agreement renews and ends, what happens if they sell their route, who covers theft, and whether they're actually local."
