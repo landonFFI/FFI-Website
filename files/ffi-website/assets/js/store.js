@@ -14,7 +14,8 @@
   var PHONE_TEL = 'tel:+12052108121';
 
   var path = window.location.pathname;
-  var base = path.indexOf('/pages/atm/') !== -1 ? '../../' : (path.indexOf('/pages/') !== -1 ? '../' : './');
+  var twoDeep = path.indexOf('/pages/atm/') !== -1 || path.indexOf('/pages/blog/') !== -1;
+  var base = twoDeep ? '../../' : (path.indexOf('/pages/') !== -1 ? '../' : './');
 
   var catalog = null;
   var catalogPromise = null;

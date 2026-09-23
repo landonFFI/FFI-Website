@@ -10,9 +10,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '699729932886668');
 fbq('track', 'PageView');
 
-// Detect depth: root, /pages/, or /pages/atm/
+// Detect depth: root, /pages/, or two levels deep (/pages/atm/, /pages/blog/)
 const path = window.location.pathname;
-const isAtmProduct = path.includes('/pages/atm/');
+const isAtmProduct = path.includes('/pages/atm/') || path.includes('/pages/blog/');
 const isPages = path.includes('/pages/') && !isAtmProduct;
 const root = isAtmProduct ? '../../' : (isPages ? '../' : './');
 

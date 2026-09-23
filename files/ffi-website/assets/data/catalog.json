@@ -11,22 +11,22 @@
         {
           "key": "1k",
           "label": "1K",
-          "amount": 258500
+          "amount": 248000
         },
         {
           "key": "2k",
           "label": "2K",
-          "amount": 290000
+          "amount": 279500
         },
         {
           "key": "dual-1k",
           "label": "Dual 1K",
-          "amount": 300500
+          "amount": 290000
         },
         {
           "key": "dual-2k",
           "label": "Dual 2K",
-          "amount": 353000
+          "amount": 342500
         }
       ],
       "optionGroups": [
@@ -96,7 +96,7 @@
             {
               "key": "nfc",
               "label": "NFC Reader",
-              "amount": 46000
+              "amount": 47500
             }
           ]
         },
@@ -152,22 +152,27 @@
         {
           "key": "1k",
           "label": "1K",
-          "amount": 285000
+          "amount": 269500
         },
         {
           "key": "2k",
           "label": "2K",
-          "amount": 316500
+          "amount": 296000
         },
         {
           "key": "dual-1k",
           "label": "Dual 1K",
-          "amount": 327000
+          "amount": 306500
         },
         {
           "key": "dual-2k",
           "label": "Dual 2K",
-          "amount": 379500
+          "amount": 364000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 422000
         }
       ],
       "optionGroups": [
@@ -269,7 +274,7 @@
             {
               "key": "nfc",
               "label": "NFC Reader",
-              "amount": 46000
+              "amount": 47500
             }
           ]
         },
@@ -476,6 +481,16 @@
           "key": "dual-2k",
           "label": "Dual 2K",
           "amount": 348000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 416000
+        },
+        {
+          "key": "8k",
+          "label": "8K",
+          "amount": 484000
         }
       ],
       "optionGroups": [
@@ -638,6 +653,16 @@
           "key": "dual-2k",
           "label": "Dual 2K",
           "amount": 364000
+        },
+        {
+          "key": "6k",
+          "label": "6K",
+          "amount": 432000
+        },
+        {
+          "key": "8k",
+          "label": "8K",
+          "amount": 500000
         }
       ],
       "optionGroups": [

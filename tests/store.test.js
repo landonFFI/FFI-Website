@@ -4,13 +4,14 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { ATM_CATALOG, fromPrice, publicCatalog, resolveLine } from '../lib/catalog.js';
 
-// The price table from CART-SPEC.md, typed independently of lib/catalog.js.
+// The FFI Terminals sheet (SWYPCO tab, Sale Price (ACH)), typed independently
+// of lib/catalog.js.
 const SPEC_PRICES = {
-  'halo-ii': { '1k': 2585, '2k': 2900, 'dual-1k': 3005, 'dual-2k': 3530 },
-  force: { '1k': 2850, '2k': 3165, 'dual-1k': 3270, 'dual-2k': 3795 },
+  'halo-ii': { '1k': 2480, '2k': 2795, 'dual-1k': 2900, 'dual-2k': 3425 },
+  force: { '1k': 2695, '2k': 2960, 'dual-1k': 3065, 'dual-2k': 3640, '6k': 4220 },
   '2800t': { '2k': 4555, '4k': 5185, '6k': 5815 },
-  g2500: { '1k': 2535, '2k': 2800, 'dual-1k': 2905, 'dual-2k': 3480 },
-  onyx: { '1k': 2695, '2k': 2960, 'dual-1k': 3065, 'dual-2k': 3640 },
+  g2500: { '1k': 2535, '2k': 2800, 'dual-1k': 2905, 'dual-2k': 3480, '6k': 4160, '8k': 4840 },
+  onyx: { '1k': 2695, '2k': 2960, 'dual-1k': 3065, 'dual-2k': 3640, '6k': 4320, '8k': 5000 },
   nova: { '1k': 3535, '2k': 3800, 'dual-1k': 3905, 'dual-2k': 4480 },
   'onyx-w': { '1k': 2965, '2k': 3330 },
   gt300: { '2k': 4630 },
@@ -37,7 +38,7 @@ test('every cassette price matches the spec table', () => {
     assert.deepEqual(actual, prices, sku);
     count += Object.keys(prices).length;
   }
-  assert.equal(count, 29);
+  assert.equal(count, 34);
 });
 
 test('each model has its own option groups, and every default is free', () => {
