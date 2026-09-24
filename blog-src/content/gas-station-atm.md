@@ -31,7 +31,7 @@ cta:
 related:
   - alabama-crypto-kiosk-law-store-owners
   - how-much-does-a-business-make-from-an-atm
-  - atm-security-theft-store
+  - alabama-credit-card-surcharge-law
 faq:
   - q: "Is an ATM worth it for a gas station?"
     a: "For most stations with steady traffic and cash-paying customers, yes. It brings customers inside, keeps cash customers from leaving, and earns a share of every surcharge. With free placement, it costs nothing."
