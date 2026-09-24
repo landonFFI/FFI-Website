@@ -31,7 +31,7 @@ cta:
 related:
   - how-much-does-a-business-make-from-an-atm
   - atm-out-of-order-cost
-  - how-free-atm-placement-works
+  - alabama-credit-card-surcharge-law
 faq:
   - q: "Should my bar have an ATM?"
     a: "If your customers ever pay cash for drinks, tips, or a cover charge, an ATM keeps them inside when they run short. It also earns you a share of every surcharge. With free placement, it costs you nothing."
