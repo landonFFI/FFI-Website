@@ -31,7 +31,7 @@ cta:
 related:
   - does-my-bar-need-an-atm
   - gas-station-atm
-  - switch-atm-processor-free
+  - read-credit-card-processing-statement
 faq:
   - q: "Is it legal to charge a fee for using a credit card in Alabama?"
     a: "Yes. Alabama has no state law banning credit card surcharges. You still have to follow Visa and Mastercard's rules: register your intent to surcharge, cap the fee at your real cost of accepting the card, and disclose it clearly before the sale and on the receipt."
