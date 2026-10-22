@@ -17,3 +17,4 @@ Removed after review because existing posts or pages already cover them: "Is you
 - [x] Where can I get cash on The Strip on gameday? (for students and visitors) → skipped: covered by tuscaloosa-gameday-atm-bars and pages/tuscaloosa-strip.html; also not a business-owner searcher FFI's blog serves
 - [x] One ATM provider for multiple store locations: how it works → skipped: covered by pages/multi-location.html
 - [x] Can I put an ATM in my house or use one personally? → skipped: not a fit for FFI's business-owner audience; no service to point it to
+- [ ] Who sets the ATM fee at my store, and can I change it? (topic_check PASS, closest is the "What surcharge fee should I set?" FAQ on pages/atm-machine-roi.html at 0.42. Ranking pages exist for "how much to charge," but demand for the host-side "who sets it" wording was not confirmed. Needs primary-source check of Visa/Mastercard uniform-surcharge rule and Reg E 1005.16 before writing.)
