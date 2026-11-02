@@ -17,3 +17,7 @@ Removed after review because existing posts or pages already cover them: "Is you
 - [x] Where can I get cash on The Strip on gameday? (for students and visitors) → skipped: covered by tuscaloosa-gameday-atm-bars and pages/tuscaloosa-strip.html; also not a business-owner searcher FFI's blog serves
 - [x] One ATM provider for multiple store locations: how it works → skipped: covered by pages/multi-location.html
 - [x] Can I put an ATM in my house or use one personally? → skipped: not a fit for FFI's business-owner audience; no service to point it to
+- [ ] Can a store ATM dispense $5 or $10 bills instead of only $20s? (retry later: 2026-11-02 found only old forum threads, a Feb 2026 credit-union announcement, and 2013-era Chase/PNC news; no People-also-ask signal, and source pages could not be fetched to verify. Partly touched by pages/faq.html "How do I reduce the frequency of my cash loading trips?" and gentlemens-clubs.html. FACTS.md has nothing on denomination settings)
+- [ ] Do ATMs run out of cash on holiday weekends? (retry later: 2026-11-02 found only non-US news; no U.S. or Alabama source or forum signal. Holiday-load advice would need FACTS.md support)
+- [ ] Do I need a license to own an ATM in Alabama? → skipped: covered by pages/how-to-start-an-atm-business.html FAQ; Alabama Securities Commission money-transmitter pages don't address ATM operators
+- [ ] ATM in a vape shop or liquor store: worth it? (retry later: only business-for-sale listings and a Kansas liquor-licensing note found 2026-11-02; no Alabama ABC rule checked)
