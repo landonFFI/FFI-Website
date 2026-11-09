@@ -1,6 +1,6 @@
 # Sitemap & crawl report
 
-Generated 2026-11-02T20:21:03.752Z
+Generated 2026-11-09T20:43:05.007Z
 
 **In the sitemap:** 70 pages (pages: 24, atms: 14, blog: 32)
 **Left out on purpose:** 4  |  **Broken internal links:** 0  |  **Orphan pages:** 0
