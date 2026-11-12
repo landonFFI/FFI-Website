@@ -17,3 +17,4 @@ Removed after review because existing posts or pages already cover them: "Is you
 - [x] Where can I get cash on The Strip on gameday? (for students and visitors) → skipped: covered by tuscaloosa-gameday-atm-bars and pages/tuscaloosa-strip.html; also not a business-owner searcher FFI's blog serves
 - [x] One ATM provider for multiple store locations: how it works → skipped: covered by pages/multi-location.html
 - [x] Can I put an ATM in my house or use one personally? → skipped: not a fit for FFI's business-owner audience; no service to point it to
+- [ ] Should I get an ATM or just offer cash back at my register? (2026-11-05 search: vendor pages only, no People-also-ask or forum signal; retry if a real customer asks)
