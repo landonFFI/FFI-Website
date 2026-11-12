@@ -11,7 +11,7 @@ Removed after review because existing posts or pages already cover them: "Is you
 - [x] How do I install an ATM? Setup step by step for new owners → skipped: covered by pages/how-to-start-an-atm-business.html and how-free-atm-placement-works
 - [x] How much can I sell my used ATM for? (single machine, not a route) → skipped: already answered in how-much-is-an-atm-route-worth ("Can I sell just one ATM?")
 - [x] What happens to my locations when I sell my ATM route? → skipped: already answered in pages/sell-your-atm.html FAQ ("What happens to my host merchant when I sell my ATM placement?")
-- [ ] How do I find my first ATM location? (tools only; no location or income promises)
+- [x] How do I find my first ATM location? (tools only; no location or income promises) → skipped: covered by pages/faq.html ("Finding Locations") and pages/how-to-start-an-atm-business.html ("Find the Right Location")
 - [x] Why won't banks open an account for my ATM business? → skipped: already answered in pages/faq.html ("Banking & MSB Classification" section)
 - [x] ATMs for laundromats and barbershops: are they worth it? → skipped: covered by pages/laundromats-barbershops.html
 - [x] Where can I get cash on The Strip on gameday? (for students and visitors) → skipped: covered by tuscaloosa-gameday-atm-bars and pages/tuscaloosa-strip.html; also not a business-owner searcher FFI's blog serves
