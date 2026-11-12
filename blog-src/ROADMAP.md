@@ -17,3 +17,4 @@ Removed after review because existing posts or pages already cover them: "Is you
 - [x] Where can I get cash on The Strip on gameday? (for students and visitors) → skipped: covered by tuscaloosa-gameday-atm-bars and pages/tuscaloosa-strip.html; also not a business-owner searcher FFI's blog serves
 - [x] One ATM provider for multiple store locations: how it works → skipped: covered by pages/multi-location.html
 - [x] Can I put an ATM in my house or use one personally? → skipped: not a fit for FFI's business-owner audience; no service to point it to
+- [ ] Do I need my landlord's permission to put an ATM in a leased store? (retry later: only lease-clause samples and a legal Q&A found on 2026-10-29, no PAA or forum signal; needs an Alabama primary source)
