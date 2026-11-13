@@ -31,7 +31,7 @@ cta:
 related:
   - do-you-have-to-buy-an-atm
   - how-free-atm-placement-works
-  - how-much-does-a-business-make-from-an-atm
+  - is-an-atm-tax-deductible
 faq:
   - q: "How much does an ATM machine cost?"
     a: "New retail ATMs we sell start at about $2,480 and most freestanding models fall between about $2,500 and $5,000 (prices as of September 2026). Through-the-wall and outdoor models cost more, with some heavy-duty machines starting above $7,000."
