@@ -31,7 +31,7 @@ cta:
 related:
   - is-the-atm-business-worth-it
   - how-much-does-an-atm-cost
-  - buying-a-used-atm-online
+  - atm-tax-write-off-section-179
 faq:
   - q: "How do ATM owners get paid?"
     a: "When a customer withdraws cash, the customer's bank reimburses the withdrawal amount and the surcharge through the payment network, and the processor deposits it into the ATM owner's bank account."
