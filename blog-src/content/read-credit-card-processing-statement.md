@@ -30,7 +30,7 @@ cta:
 related:
   - alabama-credit-card-surcharge-law
   - how-atm-owners-get-paid
-  - switch-atm-processor-free
+  - visa-mastercard-settlement-small-business
 faq:
   - q: "How do I read my credit card processing statement?"
     a: "Start with two numbers: total card sales for the month and total fees charged. Everything else on the statement is detail behind those two totals. Divide fees by sales to get your effective rate, which is the real percentage you're paying to take cards."
