@@ -31,7 +31,7 @@ cta:
 related:
   - atm-business-scams
   - how-much-does-an-atm-cost
-  - how-atm-owners-get-paid
+  - do-i-need-an-llc-for-atm-business
 faq:
   - q: "Is the ATM business profitable in 2026?"
     a: "It can be, but results depend almost entirely on location. Public listings of small ATM routes show modest profits, like a two-machine route reporting about $1,000 a year. Well-placed machines in cash-heavy businesses do much better."
