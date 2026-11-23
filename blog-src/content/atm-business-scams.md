@@ -31,7 +31,7 @@ cta:
 related:
   - is-the-atm-business-worth-it
   - how-much-does-an-atm-cost
-  - buying-a-used-atm-online
+  - do-i-need-an-llc-for-atm-business
 faq:
   - q: "Is the ATM business a scam?"
     a: "No. Owning and running ATMs is a real, legal business. But some sellers package it as a 'turnkey' opportunity with promised income and promised locations. That packaging is where most scams happen."
