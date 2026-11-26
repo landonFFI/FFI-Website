@@ -31,7 +31,7 @@ cta:
 related:
   - is-cash-dying-2026
   - how-much-does-a-business-make-from-an-atm
-  - how-free-atm-placement-works
+  - should-my-hotel-have-an-atm
 faq:
   - q: "Should my restaurant have an ATM?"
     a: "If some of your guests pay cash, tip in cash, or split checks, an ATM can keep that money in your restaurant instead of sending guests out to find cash. If almost everyone pays by card, the benefit is small."
